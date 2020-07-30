@@ -1,0 +1,31 @@
+html, body {
+    background-color: #FFFDF2;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+
+nav{
+    display:flex;
+    justify-content: space-between;
+}
+
+nav .user-name{
+    margin: 1.5% 5%;
+    font-size: 20px;
+}
+
+.title {
+    font-size: 59px;
+}
+
+.m-b-md {
+    margin: 0.5% 5%;
+}
+
+.title .titleFor{
+    display:inline;
+    color: #FFD600;
+}
+
