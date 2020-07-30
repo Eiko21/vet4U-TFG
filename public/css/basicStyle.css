@@ -29,3 +29,13 @@ nav .user-name{
     color: #FFD600;
 }
 
+#section-body{
+    width: 100%;
+    height: 78%;
+}
+
+footer{
+    width: 100%;
+    height: 4%;
+    text-align: center;
+}

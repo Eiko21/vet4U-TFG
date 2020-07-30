@@ -1,0 +1,27 @@
+#section-body .home-content{
+    text-align: center;
+    margin: 3%;
+    padding: 10% 11%;
+}
+
+.home-content .grid-content{
+    margin: 0 10%;
+    padding: 3% 22%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50% 6%;
+}
+
+.grid-content a{ text-decoration: none; }
+
+.home-content .options{
+    width: 100%;
+    border-radius: 5%;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+div[id*=item]{
+    cursor: pointer;
+}
