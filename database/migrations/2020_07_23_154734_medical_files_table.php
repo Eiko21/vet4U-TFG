@@ -17,15 +17,16 @@ class MedicalFilesTable extends Migration
             $table->id();
             $table->unsignedBigInteger("idMascota");
             $table->foreign("idMascota")->references("id")->on("pets")->onDelete("cascade");
+            $table->date("fechaVisita");
             $table->text("motivoVisita");
-            $table->text("examenFisico");
-            $table->text("diagnostico");
-            $table->text("tratamiento");
-            $table->text("indicaciones");
-            $table->text("seguimiento");
-            $table->float("temperatura",5,2);
-            $table->string("pruebaRealizada");
-            $table->text("operacionRealizada");
+            $table->text("examenFisico")->nullable();
+            $table->text("diagnostico")->nullable();
+            $table->text("tratamiento")->nullable();
+            $table->text("indicaciones")->nullable();
+            $table->text("seguimiento")->nullable();
+            $table->float("temperatura",5,2)->nullable();
+            $table->string("pruebaRealizada")->nullable();
+            $table->text("operacionRealizada")->nullable();
             $table->timestamps();
         });
     }

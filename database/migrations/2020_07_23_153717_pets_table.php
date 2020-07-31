@@ -23,10 +23,11 @@ class PetsTable extends Migration
             $table->string("chip");
             $table->string("raza");
             $table->string("especie");
+            $table->string("sexo");
             $table->date("nacimiento");
             $table->string("estatura");
             $table->float("peso",5,2);
-            $table->boolean("esterilizacion");
+            $table->boolean("esterilizacion")->default(false);
             $table->timestamps();
         });
     }

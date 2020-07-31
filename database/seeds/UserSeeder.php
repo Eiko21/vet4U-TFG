@@ -22,6 +22,15 @@ class UserSeeder extends Seeder
                 'idRol' => 3
             ],
             [
+                'nombre' => 'Pedro',
+                'apellidos' => 'González González',
+                'email' => 'pedro@gmail.com',
+                'telefono' => '222333444',
+                'password' => Hash::make('soypedro'),
+                'idVeterinario' => 2,
+                'idRol' => 3
+            ],
+            [
                 'nombre' => 'Veterinario',
                 'apellidos' => null,
                 'email' => 'veterinario@gmail.com',

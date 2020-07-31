@@ -1,0 +1,33 @@
+#section-body .medicalHistory-content{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+#pet-info #pet-name{ text-align: center; }
+
+#pet-info{
+    width: 45%;
+    border-radius: 5%;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    margin: 0 auto;
+    padding: 2%;
+}
+
+#pet-files{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0 4%;
+    margin: 2%;
+}
+
+#pet-files .file{
+    width: auto;
+    border-radius: 5%;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 2%;
+    /* margin: 0 auto; */
+}

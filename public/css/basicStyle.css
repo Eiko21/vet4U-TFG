@@ -39,3 +39,5 @@ footer{
     height: 4%;
     text-align: center;
 }
+
+.user-name a{ text-decoration: none; }

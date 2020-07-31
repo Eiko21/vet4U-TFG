@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\MedicalFile;
+use App\Pet;
 
 class MedicalFileController extends Controller
 {
@@ -13,7 +16,10 @@ class MedicalFileController extends Controller
      */
     public function index()
     {
-        //
+        $mascota = Pet::where('idDueño',Auth::user()->id)->first();
+        return view('medicalHistoryViews.medicalHistoryIndex', 
+                        ['fichas' => MedicalFile::all()->where('idMascota',$mascota->id),
+                        'mascota' => $mascota]);
     }
 
     /**
