@@ -24,3 +24,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil','UserController@index')->name('userIndex');
 
 Route::get('/historialmedico','MedicalFileController@index')->name('medicalhistoryIndex');
+
+Route::get('/vacunas','VaccineController@index')->name('vaccineIndex');

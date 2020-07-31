@@ -14,16 +14,16 @@
 
             </div>
         </a>
-        <a href="">
+        <a href="{{ route('vaccineIndex') }}">
             <div class="options" id="item2">
                 <img src="">
-                <p>Vacunas</p>
+                <p>Vacunas de tu mascota</p>
             </div>
         </a>
         <a href="">
             <div class="options" id="item3">
                 <img src="">
-                <p>Citas</p>
+                <p>Citas con el veterinario</p>
             </div>
         </a>
         <a href="{{ route('userIndex') }}">
