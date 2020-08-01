@@ -1,0 +1,36 @@
+.list-content{
+    display: grid;
+    grid-template-columns: 5% 1fr 5%;
+}
+
+.information{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.information table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#table-body:hover {background-color:#f5f5f5;}
+
+#inputdelete, #inputupdate{
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5%;
+    border: none;
+    color: white;
+    padding: 10%;
+}
+
+#inputdelete{ background-color: rgb(255, 43, 43); }
+#inputupdate{ background-color: rgb(0, 174, 255); }
+

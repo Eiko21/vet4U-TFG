@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Pet;
 
 class UserController extends Controller
 {
@@ -15,7 +16,19 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('userViews.userIndex', ['user' => User::findOrFail(Auth::user()->id)]);
+        if(Auth::user()->idRol == 3)
+            return view('userViews.userIndex', ['user' => User::findOrFail(Auth::user()->id)]);
+        else if(Auth::user()->idRol == 2) {
+            $clientes = User::all()->where('idVeterinario',Auth::user()->id);
+            if($clientes->count() > 0){
+                foreach($clientes as $cliente){
+                    $mascota = Pet::where('idDueño',$cliente->id)->first();
+                    $cliente->mascota = $mascota->nombre;
+                }
+            }
+            return view('userViews.clientIndex', compact('clientes'));
+        }
+            
     }
 
     /**

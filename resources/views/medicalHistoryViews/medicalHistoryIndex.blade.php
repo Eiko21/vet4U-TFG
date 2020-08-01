@@ -45,6 +45,14 @@
             </table>
         </div>
     </div>
+    @if (Auth::user()->idRol == 2)
+        <div id="btn-section">
+            <form action="{{ route('createFile', ['idmascota' => $mascota->id, 'clientid' => $mascota->idDueño]) }}" method="GET">
+                @csrf
+                <input id="inputadd" type="submit" name="addFile" value="+">
+            </form>
+        </div>
+    @endif
     @if($fichas->count() > 0)
     <div id="pet-files">
         @foreach ($fichas as $ficha)
@@ -83,10 +91,6 @@
                         <td>{{ $ficha->temperatura }}</td>
                     </tr>
                     <tr>
-                        <td><label for="peso">Peso</label></td>
-                        <td>{{ $ficha->peso }}</td>
-                    </tr>
-                    <tr>
                         <td><label for="pruebaRealizada">Pruebas realizadas</label></td>
                         <td>
                             @if($ficha->pruebaRealizada != null)
@@ -106,6 +110,25 @@
                             @endif
                         </td>
                     </tr>
+                    @if (Auth::user()->idRol == 2)
+                        <tr>
+                            <td>
+                                <form class="deleteForm" action="{{ route('deleteFile',['id' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                                        method="POST">
+                                    <input type='hidden' name='_method' value='DELETE'>
+                                    @csrf
+                                    <input type="submit" class="deleteFile" name="deletefile" value="Eliminar">
+                                </form>
+                            </td>
+                            <td>
+                                <form class="editForm" action="{{ route('editFile',['id' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                                        method="GET">
+                                    @csrf
+                                    <input type="submit" class="editFile" name="editfile" value="Actualizar">
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
                 </table>
             </div>
         @endforeach

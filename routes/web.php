@@ -24,3 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil','UserController@index')->name('userIndex');
 
 Route::get('/historialmedico','MedicalFileController@index')->name('medicalhistoryIndex');
+Route::get('/historialmedico/{clientid}','MedicalFileController@vetIndex')->name('petMedicalHistoryIndex');
+Route::get('/historialmedico/{idmascota}/{clientid}/create','MedicalFileController@create')->name('createFile');
+Route::post('/historialmedico/{clientid}','MedicalFileController@store')->name('storeFile');
+Route::get('/historialmedico/{id}/{clientid}/edit','MedicalFileController@edit')->name('editFile');
+Route::put('/historialmedico/{id}/{clientid}','MedicalFileController@update')->name('updateFile');
+Route::delete('/historialmedico/{id}/{clientid}','MedicalFileController@destroy')->name('deleteFile');

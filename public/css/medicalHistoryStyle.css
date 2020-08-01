@@ -6,13 +6,12 @@
 #pet-info #pet-name{ text-align: center; }
 
 #pet-info{
-    width: 45%;
     border-radius: 5%;
     background-color: white;
     color: black;
     border: 1px solid black;
     margin: 0 auto;
-    padding: 2%;
+    padding: 1% 2%;
 }
 
 #pet-files{
@@ -29,5 +28,40 @@
     color: black;
     border: 1px solid black;
     padding: 2%;
-    /* margin: 0 auto; */
 }
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    /* text-align: center; */
+}
+
+#btn-section #inputadd{
+    height: 4%;
+    width: 2.5%;
+    line-height: 200%;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50%;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.deleteForm{
+    text-align: center;
+}
+
+.deleteFile, .editFile{
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5%;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.deleteFile{ padding: 14.5%; background-color: rgb(255, 43, 43); }
+.editFile{ padding: 2.7%; background-color: rgb(0, 174, 255); }
