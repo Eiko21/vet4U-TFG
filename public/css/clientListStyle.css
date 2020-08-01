@@ -29,6 +29,7 @@ th, td {
     border: none;
     color: white;
     padding: 10%;
+    cursor: pointer;
 }
 
 #inputdelete{ background-color: rgb(255, 43, 43); }

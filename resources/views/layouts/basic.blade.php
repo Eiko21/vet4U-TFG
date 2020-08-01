@@ -22,7 +22,7 @@
     <header id='section-nav'>
         <nav id='home-nav'>
             <div class="title m-b-md">
-                Vet<p class="titleFor">For</p>U
+                <a id="homelink" href="{{ route('home') }}">Vet<p class="titleFor">For</p>U</a>
             </div>
             <div id="spacer"></div>
             <div class="user-name">{{ Auth::user()->nombre }}</div>
