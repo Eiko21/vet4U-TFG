@@ -31,6 +31,10 @@ class UserController extends Controller
             
     }
 
+    public function vetprofile(){
+        return view('userViews.vetIndex', ['user' => User::findOrFail(Auth::user()->id)]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

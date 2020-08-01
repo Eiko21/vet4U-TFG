@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/perfil','UserController@index')->name('userIndex');
+Route::get('/perfilveterinario','UserController@vetprofile')->name('vetIndex');
 
 Route::get('/historialmedico','MedicalFileController@index')->name('medicalhistoryIndex');
 Route::get('/historialmedico/{clientid}','MedicalFileController@vetIndex')->name('petMedicalHistoryIndex');

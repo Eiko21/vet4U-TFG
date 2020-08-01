@@ -26,7 +26,7 @@
                     <p>Agenda</p>
                 </div>
             </a>
-            <a href="{{ route('userIndex') }}">
+            <a href="{{ route('vetIndex') }}">
                 <div class="options" id="item4">
                     <img src="">
                     <p>Tu perfil</p>
