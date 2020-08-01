@@ -12,7 +12,6 @@
                 <div class="options" id="item1">
                     <img src="">
                     <p>Clientes</p>
-
                 </div>
             </a>
             <a href="">

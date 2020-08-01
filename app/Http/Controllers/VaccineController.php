@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Vaccine;
+use App\Pet;
 
 class VaccineController extends Controller
 {
@@ -13,7 +16,8 @@ class VaccineController extends Controller
      */
     public function index()
     {
-        //
+        $mascota = Pet::where('idDueño',Auth::user()->id)->first();
+        return view('vaccineViews.vaccineIndex', ['vacunas' => Vaccine::all()->where('idMascota',$mascota->id)]);
     }
 
     /**
