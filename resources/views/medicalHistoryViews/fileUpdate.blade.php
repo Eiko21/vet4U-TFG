@@ -12,11 +12,11 @@
                 @csrf
                 <tr>
                     <td><label for="fechaVisita">Fecha de visita</label></td>
-                    <td><input type="date" name="fechaVisita" value="{{ old('fechaVisita')??$ficha->fechaVisita }}"></td>
+                    <td><input type="date" name="fechaVisita" value="{{ old('fechaVisita')??$ficha->fechaVisita }}" required></td>
                 </tr>
                 <tr>
                     <td><label for="motivoVisita">Motivo de la visita</label></td>
-                    <td><textarea name="motivoVisita">{{ old('motivoVisita')??$ficha->motivoVisita }}</textarea></td>
+                    <td><textarea name="motivoVisita" required>{{ old('motivoVisita')??$ficha->motivoVisita }}</textarea></td>
                 </tr>
                 <tr>
                     <td><label for="examenFisico">Examen físico</label></td>
@@ -53,7 +53,6 @@
                 <tr>
                     <td>
                         <input class="update-btn" type="submit" class="editFile" name="editfile" value="Actualizar">
-                        <input type="hidden" name="idcliente" value="{{ $clientid }}">
                     </td>
                     <td>
                         <form action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET">

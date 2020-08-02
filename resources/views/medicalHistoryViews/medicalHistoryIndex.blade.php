@@ -42,6 +42,14 @@
                         @endif
                     </td>
                 </tr>
+                <tr align="center">
+                    <td>
+                        <form class="editForm" action="{{ route('editPetInfo', ['id' => $mascota->id, 'clientid' => $mascota->idDueño]) }}" method="GET">
+                            @csrf
+                            <input type="submit" class="editinfo" name="editInfo" value="Actualizar información">
+                        </form>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
@@ -110,6 +118,17 @@
                             @endif
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <form class="indexForm" action="{{ route('indexImage',['idficha' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                                    method="GET">
+                                @csrf
+                                <input type="submit" class="indexImage" name="indeximage" value="Ver imágenes">
+                                <input type="hidden" name="idficha" value="{{ $ficha->id }}">
+                                <input type="hidden" name="clientid" value="{{ $mascota->idDueño }}">
+                            </form>
+                        </td>
+                    </tr>
                     @if (Auth::user()->idRol == 2)
                         <tr>
                             <td>
@@ -130,6 +149,31 @@
                         </tr>
                     @endif
                 </table>
+                <script>
+                    $('input.deleteFile').on('click', function(e){
+                        e.preventDefault();
+                        swal({
+                            title: "¿Está seguro de que desea eliminar esta ficha?",
+                            text: "Una vez eliminada no se podrá recuperar",
+                            icon: "warning",
+                            buttons: {
+                                cancel: "Cancelar",
+                                confirm: "Confirmar eliminación"
+                            },
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                $(this).closest("form").submit();
+                                // swal("La ficha ha sido eliminada", {
+                                //     icon: "success",
+                                // });
+                            }//else {
+                            //     swal("Your imaginary file is safe!");
+                            // }
+                        });
+                    });
+                </script>
             </div>
         @endforeach
     </div>

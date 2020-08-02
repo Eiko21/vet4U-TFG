@@ -6,6 +6,9 @@
 
 @section('content')
 <div class="new-file">
+    <div style="text-align: center">
+        <h2>Nueva ficha</h2>
+    </div>
     <table>
         <form action="{{ route('storeFile', ['clientid' => $clientid]) }}" method="POST">
             @csrf
@@ -71,6 +74,9 @@
                     <input type="hidden" name="idmascota" value="{{ $idmascota }}">
                     <input type="hidden" name="idcliente" value="{{ $clientid }}">
                 </td>
+            </tr>
+        </form>
+            <tr>
                 <td>
                     <form action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET">
                         @csrf
@@ -78,7 +84,6 @@
                     </form>
                 </td>
             </tr>
-        </form>
     </table>
 </div>
 @endsection
