@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/imagesIndexStyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/galeryStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -18,12 +18,7 @@
         </div>
     @endif 
     @if (Auth::user()->idRol == 2)   
-        <div id="upload-section">
-            <form class="uploadForm" action="{{ route('createImages',['idficha' => $idficha, 'clientid'=> $clientid]) }}" 
-                    method="GET">
-                @csrf
-                <input type="submit" class="uploadImage" name="uploadimage" value="Subir imágenes">
-            </form>
+        <div id="return-section">
             <form class="returnForm" action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET">
                 @csrf
                 <input type="submit" class="return-btn" name="returnToMH" value="Volver al historial">

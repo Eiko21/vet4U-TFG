@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/medicalHistoryStyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/petHistoryStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -122,32 +122,37 @@
                         <td>
                             <form class="indexForm" action="{{ route('indexImage',['idficha' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
                                     method="GET">
-                                @csrf
+                                    @csrf
                                 <input type="submit" class="indexImage" name="indeximage" value="Ver imágenes">
                                 <input type="hidden" name="idficha" value="{{ $ficha->id }}">
                                 <input type="hidden" name="clientid" value="{{ $mascota->idDueño }}">
                             </form>
                         </td>
-                    </tr>
                     @if (Auth::user()->idRol == 2)
-                        <tr>
-                            <td>
-                                <form class="deleteForm" action="{{ route('deleteFile',['id' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
-                                        method="POST">
-                                    <input type='hidden' name='_method' value='DELETE'>
-                                    @csrf
-                                    <input type="submit" class="deleteFile" name="deletefile" value="Eliminar">
-                                </form>
-                            </td>
-                            <td>
-                                <form class="editForm" action="{{ route('editFile',['id' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
-                                        method="GET">
-                                    @csrf
-                                    <input type="submit" class="editFile" name="editfile" value="Actualizar">
-                                </form>
-                            </td>
-                        </tr>
+                        <td>
+                            <form class="uploadForm" action="{{ route('createImages',['idficha' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                                method="GET">
+                                @csrf
+                                <input type="submit" class="uploadImage" name="uploadimage" value="Subir imágenes">
+                            </form>
+                        </td>
+                        <td>
+                            <form class="editForm" action="{{ route('editFile',['id' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                                    method="GET">
+                                @csrf
+                                <input type="submit" class="editFile" name="editfile" value="Actualizar ficha">
+                            </form>
+                        </td>
+                        <td>
+                            <form class="deleteForm" action="{{ route('deleteFile',['id' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                                    method="POST">
+                                <input type='hidden' name='_method' value='DELETE'>
+                                @csrf
+                                <input type="submit" class="deleteFile" name="deletefile" value="Eliminar ficha">
+                            </form>
+                        </td>
                     @endif
+                    </tr>
                 </table>
                 <script>
                     $('input.deleteFile').on('click', function(e){
