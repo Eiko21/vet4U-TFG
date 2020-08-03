@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/medicalHistoryStyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/petHistoryStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -42,9 +42,25 @@
                         @endif
                     </td>
                 </tr>
+                <tr align="center">
+                    <td>
+                        <form class="editForm" action="{{ route('editPetInfo', ['id' => $mascota->id, 'clientid' => $mascota->idDueño]) }}" method="GET">
+                            @csrf
+                            <input type="submit" class="editinfo" name="editInfo" value="Actualizar información">
+                        </form>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
+    @if (Auth::user()->idRol == 2)
+        <div id="btn-section">
+            <form action="{{ route('createFile', ['idmascota' => $mascota->id, 'clientid' => $mascota->idDueño]) }}" method="GET">
+                @csrf
+                <input id="inputadd" type="submit" name="addFile" value="+">
+            </form>
+        </div>
+    @endif
     @if($fichas->count() > 0)
     <div id="pet-files">
         @foreach ($fichas as $ficha)
@@ -83,10 +99,6 @@
                         <td>{{ $ficha->temperatura }}</td>
                     </tr>
                     <tr>
-                        <td><label for="peso">Peso</label></td>
-                        <td>{{ $ficha->peso }}</td>
-                    </tr>
-                    <tr>
                         <td><label for="pruebaRealizada">Pruebas realizadas</label></td>
                         <td>
                             @if($ficha->pruebaRealizada != null)
@@ -106,7 +118,67 @@
                             @endif
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <form class="indexForm" action="{{ route('indexImage',['idficha' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                                    method="GET">
+                                    @csrf
+                                <input type="submit" class="indexImage" name="indeximage" value="Ver imágenes">
+                                <input type="hidden" name="idficha" value="{{ $ficha->id }}">
+                                <input type="hidden" name="clientid" value="{{ $mascota->idDueño }}">
+                            </form>
+                        </td>
+                    @if (Auth::user()->idRol == 2)
+                        <td>
+                            <form class="uploadForm" action="{{ route('createImages',['idficha' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                                method="GET">
+                                @csrf
+                                <input type="submit" class="uploadImage" name="uploadimage" value="Subir imágenes">
+                            </form>
+                        </td>
+                        <td>
+                            <form class="editForm" action="{{ route('editFile',['id' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                                    method="GET">
+                                @csrf
+                                <input type="submit" class="editFile" name="editfile" value="Actualizar ficha">
+                            </form>
+                        </td>
+                        <td>
+                            <form class="deleteForm" action="{{ route('deleteFile',['id' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                                    method="POST">
+                                <input type='hidden' name='_method' value='DELETE'>
+                                @csrf
+                                <input type="submit" class="deleteFile" name="deletefile" value="Eliminar ficha">
+                            </form>
+                        </td>
+                    @endif
+                    </tr>
                 </table>
+                <script>
+                    $('input.deleteFile').on('click', function(e){
+                        e.preventDefault();
+                        swal({
+                            title: "¿Está seguro de que desea eliminar esta ficha?",
+                            text: "Una vez eliminada no se podrá recuperar",
+                            icon: "warning",
+                            buttons: {
+                                cancel: "Cancelar",
+                                confirm: "Confirmar eliminación"
+                            },
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                $(this).closest("form").submit();
+                                // swal("La ficha ha sido eliminada", {
+                                //     icon: "success",
+                                // });
+                            }//else {
+                            //     swal("Your imaginary file is safe!");
+                            // }
+                        });
+                    });
+                </script>
             </div>
         @endforeach
     </div>

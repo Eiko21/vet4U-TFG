@@ -21,6 +21,7 @@ class AppointmentsTable extends Migration
             $table->foreign("idVeterinario")->references("id")->on("users")->onDelete("cascade");
             $table->date("fechaCita");
             $table->string("tipoCita");
+            $table->boolean('seleccionable')->default(true);
             $table->timestamps();
         });
     }

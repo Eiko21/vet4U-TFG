@@ -15,6 +15,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/basicStyle.css') }}" rel="stylesheet">
+
+    <!-- Libraries -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
+        crossorigin="anonymous"></script>
     @yield('styles')
 
 </head>
@@ -22,7 +27,7 @@
     <header id='section-nav'>
         <nav id='home-nav'>
             <div class="title m-b-md">
-                Vet<p class="titleFor">For</p>U
+                <a id="homelink" href="{{ route('home') }}">Vet<p class="titleFor">For</p>U</a>
             </div>
             <div id="spacer"></div>
             <div class="user-name">{{ Auth::user()->nombre }}</div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pet;
 
 class PetController extends Controller
 {
@@ -54,9 +55,9 @@ class PetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $clientid)
     {
-        //
+        return view('petViews.petEdit', ['mascota' => Pet::findOrFail($id), 'clientid' => $clientid]);
     }
 
     /**
@@ -66,9 +67,21 @@ class PetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $clientid)
     {
-        //
+        $mascota = Pet::findOrFail($id);
+
+        $mascota->chip = $request->chip;
+        $mascota->especie = $request->especie;
+        $mascota->raza = $request->raza;
+        $mascota->nacimiento = $request->nacimiento;
+        $mascota->estatura = $request->estatura;
+        if($request->esterilizacion == "Sí") $mascota->esterilizacion = true;
+        else if($request->esterilizacion == "No") $mascota->esterilizacion = false;
+
+        $clientid = $request->clientid;
+        $mascota->save();
+        return redirect(route('petMedicalHistoryIndex', compact('clientid')));
     }
 
     /**

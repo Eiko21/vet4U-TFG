@@ -14,13 +14,12 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+            
                 <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @endauth
+                    
+                    
                 </div>
-            @endif
+            
 
             <div class="content">
                 <div class="title m-b-md">
@@ -28,8 +27,14 @@
                 </div>
 
                 <div class="links">
-                    <a id='login' href="{{ route('login') }}"><p>Iniciar sesión</p></a>
-                    <a id='register' href="{{ route('register') }}">Registrarse</a>
+                    @if (Route::has('login'))
+                        @auth
+                            <a href="{{ url('/home') }}">Home</a>
+                        @else
+                            <a id='login' href="{{ route('login') }}"><p>Iniciar sesión</p></a>
+                            <a id='register' href="{{ route('register') }}">Registrarse</a>
+                        @endauth
+                    @endif
                 </div>
             <div class="principalImage">
                 <img src="{{ asset('principalimg/petsImage.png') }}">

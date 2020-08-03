@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\MedicalFileImage;
 
 class MedicalFileImageController extends Controller
 {
@@ -11,9 +12,12 @@ class MedicalFileImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idficha,$clientid)
     {
-        //
+        return view('imagesfileViews.imagesIndex', 
+            ['imagenes' => MedicalFileImage::all()->where('idFicha',$idficha),
+            'idficha' => $idficha,
+            'clientid' => $clientid]);
     }
 
     /**
@@ -21,9 +25,9 @@ class MedicalFileImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idficha, $clientid)
     {
-        //
+        return view('imagesfileViews.imagesCreate', compact('idficha','clientid'));
     }
 
     /**
@@ -32,9 +36,32 @@ class MedicalFileImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $idficha, $clientid)
     {
-        //
+        // $imagenes = array();
+        // if($request->hasFile('imagen')){
+        //     foreach($request->file('imagen') as $imagen){
+        //         $nombre = $imagen->getClientOriginalName();
+        //         $imagen->move(public_path('/imagesMedicalFile'), $nombre);
+        //         $imagenes[] = $nombre;
+        //     }
+        // }
+
+        // $allimages = implode('|', $imagenes);
+        $imagenFicha = new MedicalFileImage();
+        
+        if($request->hasFile('imagen')){
+            $filenameWithExt = $request->file('imagen')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('imagen')->getClientOriginalExtension();
+            $fileNameToStore = $filename.'_' .time().'.' .$extension;
+            $path=$request->file('imagen')->move(public_path('/images'), $fileNameToStore);
+            $imagenFicha->imagen = $fileNameToStore;
+        }
+
+        $imagenFicha->idFicha = $idficha;
+        $imagenFicha->save();
+        return redirect(route('indexImage', compact('idficha','clientid')));
     }
 
     /**
