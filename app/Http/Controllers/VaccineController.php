@@ -16,7 +16,7 @@ class VaccineController extends Controller
      */
     public function index()
     {
-        $mascota = Pet::where('idDueño',Auth::user()->id)->first();
+        $mascota = Pet::where('idDueño',Auth::user()->id)->orWhere('idVeterinario',Auth::user()->id)->first();
         return view('vaccineViews.vaccineIndex', ['vacunas' => Vaccine::all()->where('idMascota',$mascota->id)]);
     }
 
@@ -25,9 +25,9 @@ class VaccineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idmascota)
     {
-        //
+        return view('vaccineViews.vaccineCreate', ['idmascota' => $idmascota]);
     }
 
     /**

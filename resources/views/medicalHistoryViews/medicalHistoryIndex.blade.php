@@ -49,6 +49,12 @@
                             <input type="submit" class="editinfo" name="editInfo" value="Actualizar información">
                         </form>
                     </td>
+                    <td>
+                        <form class="indexForm" action="{{ route('vaccineIndex', ['idmascota' => $mascota->id]) }}" method="GET">
+                            @csrf
+                            <input type="submit" class="indexvaccines" name="indexVaccines" value="Ver vacunas">
+                        </form>
+                    </td>
                 </tr>
             </table>
         </div>

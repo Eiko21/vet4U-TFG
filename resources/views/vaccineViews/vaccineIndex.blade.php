@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
+    <div>
+        <a href="{{ route('home') }}">Volver</a>
+    </div>
+    @if (Auth::user()->idRol == 2)
+        <form action="{{ route('createVaccine') }}" method="GET">
+            @csrf
+            <input type="submit" class="createvaccine" name="createVaccine" value="Añadir vacuna"><i class="fas fa-plus"></i>
+        </form>
+    @endif
     @if($vacunas->count() > 0)
         <div id="pet-vaccines">
             @foreach ($vacunas as $vacuna)

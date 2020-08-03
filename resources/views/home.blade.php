@@ -10,51 +10,51 @@
         @if(Auth::user()->idRol == 2)
             <a href="{{ route('userIndex') }}">
                 <div class="options" id="item1">
-                    <img src="">
+                    <i class="fas fa-users"></i>
                     <p>Clientes</p>
                 </div>
             </a>
             <a href="">
                 <div class="options" id="item2">
-                    <img src="">
+                    <i class="fas fa-calendar"></i>
                     <p>Citas</p>
                 </div>
             </a>
             <a href="">
                 <div class="options" id="item3">
-                    <img src="">
+                    <i class="fas fa-list"></i>
                     <p>Agenda</p>
                 </div>
             </a>
             <a href="{{ route('vetIndex') }}">
                 <div class="options" id="item4">
-                    <img src="">
+                    <i class="fas fa-user"></i>
                     <p>Tu perfil</p>
                 </div>
             </a>
         @else
             <a href="{{ route('medicalhistoryIndex') }}">
                 <div class="options" id="item1">
-                    <img src="">
+                    <i class="fas fa-inbox"></i>
                     <p>Historial de tu mascota</p>
 
                 </div>
             </a>
-            <a href="">
+            <a href="{{ route('vaccineIndex') }}">
                 <div class="options" id="item2">
-                    <img src="">
+                    <i class="fas fa-calendar"></i>
                     <p>Vacunas</p>
                 </div>
             </a>
             <a href="">
                 <div class="options" id="item3">
-                    <img src="">
+                    <i class="fas fa-calendar"></i>
                     <p>Citas</p>
                 </div>
             </a>
             <a href="{{ route('userIndex') }}">
                 <div class="options" id="item4">
-                    <img src="">
+                    <i class="fas fa-user"></i>
                     <p>Tu perfil</p>
                 </div>
             </a>
