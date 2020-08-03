@@ -25,3 +25,5 @@
 div[id*=item]{
     cursor: pointer;
 }
+
+i{ padding: 3%; }

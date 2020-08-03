@@ -174,14 +174,7 @@
                             dangerMode: true,
                         })
                         .then((willDelete) => {
-                            if (willDelete) {
-                                $(this).closest("form").submit();
-                                // swal("La ficha ha sido eliminada", {
-                                //     icon: "success",
-                                // });
-                            }//else {
-                            //     swal("Your imaginary file is safe!");
-                            // }
+                            if (willDelete) $(this).closest("form").submit();
                         });
                     });
                 </script>

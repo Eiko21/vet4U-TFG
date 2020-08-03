@@ -18,14 +18,14 @@ class MedicalFileController extends Controller
     public function index()
     {
         $mascota = Pet::where('idDueño',Auth::user()->id)->first();
-        return view('medicalHistoryViews.medicalHistoryIndex', 
+        return view('medicalHistoryViews.medicalHistory', 
                         ['fichas' => MedicalFile::all()->where('idMascota',$mascota->id),
                         'mascota' => $mascota]);
     }
     public function vetIndex($clientid)
     {
         $mascota = Pet::where('idDueño',$clientid)->first();
-        return view('medicalHistoryViews.medicalHistoryIndex', 
+        return view('medicalHistoryViews.medicalHistory', 
                         ['fichas' => MedicalFile::all()->where('idMascota',$mascota->id),
                         'mascota' => $mascota]);
     }

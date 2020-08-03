@@ -1,18 +1,20 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/vaccineStyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/vaccineListStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
-    <div>
-        <a href="{{ route('home') }}">Volver</a>
+    <div class="title-vaccine-section">
+        <h2>Vacunas aplicadas</h2>
     </div>
     @if (Auth::user()->idRol == 2)
-        <form action="{{ route('createVaccine') }}" method="GET">
-            @csrf
-            <input type="submit" class="createvaccine" name="createVaccine" value="Añadir vacuna"><i class="fas fa-plus"></i>
-        </form>
+        <div class="create-vaccine-section">
+            <form action="{{ route('createVaccine', ['idmascota' => $idmascota]) }}" method="GET">
+                @csrf
+                <input type="submit" class="createvaccine" name="createVaccine" value="Añadir vacuna">
+            </form>
+        </div>
     @endif
     @if($vacunas->count() > 0)
         <div id="pet-vaccines">
@@ -31,7 +33,34 @@
                             <td><label for="vencimiento">Vencimiento</label></td>
                             <td>{{ $vacuna->vencimiento }}</td>
                         </tr>
+                        <tr>
+                            <td>
+                                <form action="{{ route('deleteVaccine', ['id' => $vacuna->id, 'idmascota' => $idmascota]) }}" method="POST">
+                                    <input type='hidden' name='_method' value='DELETE'>
+                                    @csrf
+                                    <input type="submit" class="deleteVaccine" name="deletevaccine" value="Eliminar vacuna">
+                                </form>
+                            </td>
+                        </tr>
                     </table>
+                    <script>
+                        $('input.deleteVaccine').on('click', function(e){
+                            e.preventDefault();
+                            swal({
+                                title: "¿Está seguro de que desea eliminar la vacuna?",
+                                text: "Una vez eliminada no se podrá recuperar",
+                                icon: "warning",
+                                buttons: {
+                                    cancel: "Cancelar",
+                                    confirm: "Confirmar eliminación"
+                                },
+                                dangerMode: true,
+                            })
+                            .then((willDelete) => {
+                                if (willDelete) $(this).closest("form").submit();
+                            });
+                        });
+                    </script>
                 </div>
             @endforeach
         </div>

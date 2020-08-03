@@ -14,10 +14,11 @@ class VaccineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idmascota)
     {
-        $mascota = Pet::where('idDueño',Auth::user()->id)->orWhere('idVeterinario',Auth::user()->id)->first();
-        return view('vaccineViews.vaccineIndex', ['vacunas' => Vaccine::all()->where('idMascota',$mascota->id)]);
+        return view('vaccineViews.vaccineIndex', [
+            'vacunas' => Vaccine::all()->where('idMascota',$idmascota),
+            'idmascota' => $idmascota]);
     }
 
     /**
@@ -27,7 +28,7 @@ class VaccineController extends Controller
      */
     public function create($idmascota)
     {
-        return view('vaccineViews.vaccineCreate', ['idmascota' => $idmascota]);
+        return view('vaccineViews.createVaccine', ['idmascota' => $idmascota]);
     }
 
     /**
@@ -36,9 +37,16 @@ class VaccineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $idmascota)
     {
-        //
+        $vacuna = new Vaccine();
+        $vacuna->idMascota = $idmascota;
+        $vacuna->nombreVacuna = $request->nombreVacuna;
+        $vacuna->fechaAplicacion = $request->fechaAplicacion;
+        $vacuna->vencimiento = $request->vencimiento;
+
+        $vacuna->save();
+        return redirect(route('vaccineIndex', compact('idmascota')));
     }
 
     /**
@@ -81,8 +89,10 @@ class VaccineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $idmascota)
     {
-        //
+        $vacuna = Vaccine::findOrFail($id);
+        $vacuna->delete();
+        return redirect(route('vaccineIndex', compact('idmascota')));
     }
 }
