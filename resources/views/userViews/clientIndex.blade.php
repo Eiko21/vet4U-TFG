@@ -24,7 +24,8 @@
                     <td><p>{{ $cliente->email }}</p></td>
                     <td><p>{{ $cliente->telefono }}</p></td>
                     <td>
-                        <a href="{{ route('petMedicalHistoryIndex', ['clientid' => $cliente->id]) }}">
+                        {{-- <a href="{{ route('petMedicalHistoryIndex', ['clientid' => $cliente->id]) }}"> --}}
+                        <a href="{{ route('medicalhistoryIndex') }}">
                             {{ $cliente->mascota }}
                         </a>
                     </td>

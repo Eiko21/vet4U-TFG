@@ -10,7 +10,7 @@
         <h2>Nueva ficha</h2>
     </div>
     <table>
-        <form action="{{ route('storeFile', ['clientid' => $clientid]) }}" method="POST">
+        <form action="{{ route('storeFile', ['idmascota' => $idmascota]) }}" method="POST">
             @csrf
             <tr>
                 <td><label for="fechaVisita">Fecha de visita</label></td>
@@ -71,14 +71,15 @@
             <tr>
                 <td>
                     <input type="submit" class="create-btn" name="createfile" value="Crear ficha">
-                    <input type="hidden" name="idmascota" value="{{ $idmascota }}">
-                    <input type="hidden" name="idcliente" value="{{ $clientid }}">
+                    {{-- <input type="hidden" name="idmascota" value="{{ $idmascota }}"> --}}
+                    {{-- <input type="hidden" name="idcliente" value="{{ $clientid }}"> --}}
                 </td>
             </tr>
         </form>
             <tr>
                 <td>
-                    <form action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET">
+                    {{-- <form action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET"> --}}
+                    <form action="{{ route('medicalhistoryIndex') }}" method="GET">
                         @csrf
                         <input type="submit" class="cancel-btn" name="cancelfile" value="Cancelar">
                     </form>

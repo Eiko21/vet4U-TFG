@@ -12,12 +12,15 @@ class MedicalFileImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($idficha,$clientid)
+    public function index($idficha)
     {
+        // return view('imagesfileViews.imagesIndex', 
+        //     ['imagenes' => MedicalFileImage::all()->where('idFicha',$idficha),
+        //     'idficha' => $idficha,
+        //     'clientid' => $clientid]);
         return view('imagesfileViews.imagesIndex', 
             ['imagenes' => MedicalFileImage::all()->where('idFicha',$idficha),
-            'idficha' => $idficha,
-            'clientid' => $clientid]);
+            'idficha' => $idficha]);
     }
 
     /**
@@ -25,9 +28,10 @@ class MedicalFileImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($idficha, $clientid)
+    public function create($idficha)
     {
-        return view('imagesfileViews.imagesCreate', compact('idficha','clientid'));
+        // return view('imagesfileViews.imagesCreate', compact('idficha','clientid'));
+        return view('imagesfileViews.imagesCreate', compact('idficha'));
     }
 
     /**
@@ -36,7 +40,7 @@ class MedicalFileImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $idficha, $clientid)
+    public function store(Request $request, $idficha)
     {
         // $imagenes = array();
         // if($request->hasFile('imagen')){
@@ -46,8 +50,8 @@ class MedicalFileImageController extends Controller
         //         $imagenes[] = $nombre;
         //     }
         // }
-
         // $allimages = implode('|', $imagenes);
+
         $imagenFicha = new MedicalFileImage();
         
         if($request->hasFile('imagen')){
@@ -61,7 +65,7 @@ class MedicalFileImageController extends Controller
 
         $imagenFicha->idFicha = $idficha;
         $imagenFicha->save();
-        return redirect(route('indexImage', compact('idficha','clientid')));
+        return redirect(route('indexImage', compact('idficha')));
     }
 
     /**

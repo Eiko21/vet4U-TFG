@@ -7,7 +7,7 @@
 @section('content')
     <div class="update-file">
         <table>
-            <form action="{{ route('updatePetInfo',['id' => $mascota->id, 'clientid'=> $clientid]) }}" method="POST">
+            <form action="{{ route('updatePetInfo',['id' => $mascota->id]) }}" method="POST">
                 <input type='hidden' name='_method' value='PUT'>
                 @csrf
                 <tr>
@@ -48,7 +48,8 @@
             </form>
                 <tr>
                     <td>
-                        <form action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET">
+                        {{-- <form action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET"> --}}
+                        <form action="{{ route('medicalhistoryIndex') }}" method="GET">
                             @csrf
                             <input type="submit" class="cancel-btn" name="cancelinfo" value="Cancelar">
                         </form>

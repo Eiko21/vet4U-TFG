@@ -17,40 +17,42 @@ class MedicalFileController extends Controller
      */
     public function index()
     {
-        $mascota = Pet::where('idDueño',Auth::user()->id)->first();
+        $mascota = Pet::where('idDueño',Auth::user()->id)->orWhere('idVeterinario',Auth::user()->id)->first();
         return view('medicalHistoryViews.medicalHistory', 
                         ['fichas' => MedicalFile::all()->where('idMascota',$mascota->id),
                         'mascota' => $mascota]);
     }
-    public function vetIndex($clientid)
-    {
-        $mascota = Pet::where('idDueño',$clientid)->first();
-        return view('medicalHistoryViews.medicalHistory', 
-                        ['fichas' => MedicalFile::all()->where('idMascota',$mascota->id),
-                        'mascota' => $mascota]);
-    }
+
+    // public function vetIndex($clientid)
+    // {
+    //     $mascota = Pet::where('idDueño',$clientid)->first();
+    //     return view('medicalHistoryViews.medicalHistory', 
+    //                     ['fichas' => MedicalFile::all()->where('idMascota',$mascota->id),
+    //                     'mascota' => $mascota]);
+    // }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($idmascota, $clientid)
+    public function create($idmascota)
     {
-        return view('medicalHistoryViews.fileCreate', compact('idmascota','clientid'));
+        return view('medicalHistoryViews.fileCreate', compact('idmascota'));
+        // return view('medicalHistoryViews.fileCreate', compact('idmascota','clientid'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$idmascota)
     {
         $ficha = new MedicalFile();
 
-        $ficha->idMascota = $request->idmascota;
+        $ficha->idMascota = $idmascota;
         $ficha->fechaVisita = $request->fechaVisita;
         $ficha->motivoVisita = $request->motivoVisita;
         $ficha->examenFisico = $request->examenFisico;
@@ -62,10 +64,11 @@ class MedicalFileController extends Controller
         $ficha->pruebaRealizada = $request->pruebaRealizada;
         $ficha->operacionRealizada = $request->operacionRealizada;
 
-        $clientid = $request->clientid;
+        // $clientid = $request->clientid;
 
         $ficha->save();
-        return redirect(route('petMedicalHistoryIndex', compact('clientid')));
+        return redirect(route('medicalhistoryIndex'));
+        // return redirect(route('petMedicalHistoryIndex', compact('clientid')));
     }
 
     /**
@@ -85,10 +88,10 @@ class MedicalFileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, $clientid)
+    public function edit($id)
     {
         $ficha = MedicalFile::findOrFail($id);
-        return view('medicalHistoryViews.fileUpdate', compact('ficha','clientid'));
+        return view('medicalHistoryViews.fileUpdate', compact('ficha'));
     }
 
     /**
@@ -98,7 +101,7 @@ class MedicalFileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, $clientid)
+    public function update(Request $request, $id)
     {
         $ficha = MedicalFile::findOrFail($id);
 
@@ -113,9 +116,11 @@ class MedicalFileController extends Controller
         $ficha->pruebaRealizada = $request->pruebaRealizada;
         $ficha->operacionRealizada = $request->operacionRealizada;
 
-        $clientid = $request->clientid;
+        // $clientid = $request->clientid;
+
         $ficha->save();
-        return redirect(route('petMedicalHistoryIndex', compact('clientid')));
+        return redirect(route('medicalhistoryIndex'));
+        // return redirect(route('petMedicalHistoryIndex', compact('clientid')));
     }
 
     /**
@@ -124,10 +129,10 @@ class MedicalFileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $clientid)
+    public function destroy($id)
     {
         $ficha = MedicalFile::findOrFail($id);
         $ficha->delete();
-        return redirect(route('petMedicalHistoryIndex', compact('clientid')));
+        return redirect(route('medicalhistoryIndex'));
     }
 }

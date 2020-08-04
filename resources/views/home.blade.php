@@ -14,7 +14,7 @@
                     <p>Clientes</p>
                 </div>
             </a>
-            <a href="">
+            <a href="{{ route('appointmentsIndex') }}">
                 <div class="options" id="item2">
                     <i class="fas fa-calendar"></i>
                     <p>Citas</p>

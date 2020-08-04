@@ -55,9 +55,10 @@ class PetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, $clientid)
+    public function edit($id)
     {
-        return view('petViews.petEdit', ['mascota' => Pet::findOrFail($id), 'clientid' => $clientid]);
+        // return view('petViews.petEdit', ['mascota' => Pet::findOrFail($id), 'clientid' => $clientid]);
+        return view('petViews.petEdit', ['mascota' => Pet::findOrFail($id)]);
     }
 
     /**
