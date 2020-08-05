@@ -49,7 +49,7 @@
                         @else
                             <td><label for="veterinario">Veterinario</label></td>
                             <td>
-                                <input type="text" name="cliente" value="{{ $veterinario->nombre }}" disabled>
+                                <input type="text" name="nombrevet" value="{{ $veterinario->nombre }}" disabled>
                                 <input type="hidden" name="idVeterinario" value="{{ $veterinario->id }}">
                                 <input type="hidden" name="idDueño" value="{{ Auth::user()->id }}">
                             </td>

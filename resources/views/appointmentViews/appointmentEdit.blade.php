@@ -49,19 +49,21 @@
                         </td>
                     </tr>
                     <tr>
+                        @if (Auth::user()->idRol == 2)
                         <td><label for="cliente">Cliente</label></td>
-                            @if (Auth::user()->idRol == 2)
                             <td>
                                 <input type="text" name="cliente" value="{{ $cliente->nombre }}" disabled>
                                 <input type="hidden" name="idDueño" value="{{ $cliente->id }}">
                             </td>
-                            @else
-                                <td>
-                                    <input type="text" name="cliente" value="{{ Auth::user()->nombre }}" disabled>
-                                    <input type="hidden" name="idDueño" value="{{ Auth::user()->id }}">
-                                </td>
-                            @endif                       
-                        </tr>                                
+                        @else
+                            <td><label for="veterinario">Veterinario</label></td>
+                            <td>
+                                <input type="text" name="nombrevet" value="{{ $veterinario->nombre }}" disabled>
+                                <input type="hidden" name="idVeterinario" value="{{ $veterinario->id }}">
+                                <input type="hidden" name="idDueño" value="{{ Auth::user()->id }}">
+                            </td>
+                        @endif                       
+                    </tr>                                
                     <tr>
                         <td>
                             <input type="submit" class="updateAppointment" name="update" value="Cambiar cita">
