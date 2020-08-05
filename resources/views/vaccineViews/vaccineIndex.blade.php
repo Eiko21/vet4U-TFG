@@ -33,15 +33,17 @@
                             <td><label for="vencimiento">Vencimiento</label></td>
                             <td>{{ $vacuna->vencimiento }}</td>
                         </tr>
-                        <tr>
-                            <td>
-                                <form action="{{ route('deleteVaccine', ['id' => $vacuna->id, 'idmascota' => $idmascota]) }}" method="POST">
-                                    <input type='hidden' name='_method' value='DELETE'>
-                                    @csrf
-                                    <input type="submit" class="deleteVaccine" name="deletevaccine" value="Eliminar vacuna">
-                                </form>
-                            </td>
-                        </tr>
+                        @if (Auth::user()->idRol == 2)
+                            <tr>
+                                <td>
+                                    <form action="{{ route('deleteVaccine', ['id' => $vacuna->id, 'idmascota' => $idmascota]) }}" method="POST">
+                                        <input type='hidden' name='_method' value='DELETE'>
+                                        @csrf
+                                        <input type="submit" class="deleteVaccine" name="deletevaccine" value="Eliminar vacuna">
+                                    </form>
+                                </td>
+                            </tr>
+                        @endif
                     </table>
                     <script>
                         $('input.deleteVaccine').on('click', function(e){

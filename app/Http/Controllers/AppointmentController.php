@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Appointment;
+use App\User;
+use App\Hour;
+use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
@@ -13,7 +18,19 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        $citas = Appointment::where('idDueño',Auth::user()->id)->orWhere('idVeterinario',Auth::user()->id)->get();
+        if($citas->count() > 0){
+            foreach ($citas as $cita) {
+                if(Auth::user()->idRol == 3){
+                    $veterinario = User::all()->where('idVeterinario',Auth::user()->idVeterinario)->first();
+                    $cita->veterinario = $veterinario->nombre;
+                }else if(Auth::user()->idRol == 2){
+                    $cliente = User::where('idDueño',$cita->idDueño)->first();
+                    $cita->cliente = $cliente->nombre;
+                }
+            }
+        }
+        return view('appointmentViews.appointmentIndex',['citas' => $citas]);
     }
 
     /**
@@ -23,7 +40,24 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        $clientes = User::all()->where('idVeterinario',Auth::user()->idVeterinario);
+        $veterinario = User::findOrFail(Auth::user()->idVeterinario);
+        $horas = Hour::all();
+        $citas = Appointment::all();
+        $primerDiaSemana = Carbon::now()->startOfMonth();
+        $ultimoDiaSemana = Carbon::now()->endOfMonth();
+
+        $fechas = [];
+        while ($primerDiaSemana->lte($ultimoDiaSemana)) {
+            $diaLaboral = Carbon::parse($primerDiaSemana);
+            if ($diaLaboral->isWeekday() && $diaLaboral > Carbon::now()) { 
+                $fechas[] = $primerDiaSemana->copy()->format('Y-m-d');
+            }
+            $primerDiaSemana->addDay();
+        }
+        
+        return view('appointmentViews.appointmentCreate',['fechas' => $fechas, 'clientes' => $clientes, 
+            'veterinario' => $veterinario,'horas' => $horas, 'citas' => $citas]);
     }
 
     /**
@@ -34,7 +68,16 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cita = new Appointment();
+
+        $cita->idDueño = $request->idDueño;
+        $cita->idVeterinario = $request->idVeterinario;
+        $cita->fechaCita = $request->fechaCita;
+        $cita->hora = $request->hora;
+        $cita->tipoCita = $request->tipoCita;
+
+        $cita->save();
+        return redirect(route('appointmentsIndex'));
     }
 
     /**
@@ -54,9 +97,27 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idcita)
     {
-        //
+        $cita = Appointment::findOrFail($idcita);
+        $cliente = User::findOrFail($cita->idDueño);
+        $horas = Hour::all();
+        $citas = Appointment::all();
+
+        $primerDiaSemana = Carbon::now()->startOfMonth();
+        $ultimoDiaSemana = Carbon::now()->endOfMonth();
+        
+        $fechas = [];
+        while ($primerDiaSemana->lte($ultimoDiaSemana)) {
+            $diaLaboral = Carbon::parse($primerDiaSemana);
+            if ($diaLaboral->isWeekday() && $diaLaboral > Carbon::now()) { 
+                $fechas[] = $primerDiaSemana->copy()->format('Y-m-d');
+            }
+            $primerDiaSemana->addDay();
+        }
+        
+        return view('appointmentViews.appointmentEdit',['cita' => $cita, 'cliente' => $cliente, 
+            'horas' => $horas, 'citas' => $citas, 'fechas' => $fechas]);
     }
 
     /**
@@ -66,9 +127,18 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$idcita)
     {
-        //
+        $cita = Appointment::findOrFail($idcita);
+
+        $cita->idDueño = $request->idDueño;
+        $cita->fechaCita = $request->fechaCita;
+        $cita->hora = $request->hora;
+        $cita->tipoCita = $request->tipoCita;
+        // $cita->seleccionable = false;
+
+        $cita->save();
+        return redirect(route('appointmentsIndex'));
     }
 
     /**
@@ -77,8 +147,10 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($idcita)
     {
-        //
+        $cita = Appointment::findOrFail($idcita);
+        $cita->delete();
+        return redirect(route('appointmentsIndex'));
     }
 }

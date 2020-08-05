@@ -15,13 +15,13 @@ class AppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("idDueño");
+            $table->unsignedBigInteger("idDueño")->nullable()->unsigned();
             $table->foreign("idDueño")->references("id")->on("users")->onDelete("cascade");
             $table->unsignedBigInteger("idVeterinario");
             $table->foreign("idVeterinario")->references("id")->on("users")->onDelete("cascade");
             $table->date("fechaCita");
-            $table->string("tipoCita");
-            $table->boolean('seleccionable')->default(true);
+            $table->string("hora");
+            $table->string("tipoCita")->nullable();
             $table->timestamps();
         });
     }

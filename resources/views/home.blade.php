@@ -40,13 +40,13 @@
 
                 </div>
             </a>
-            <a href="{{ route('vaccineIndex') }}">
+            <a href="{{ route('vaccineClientIndex') }}">
                 <div class="options" id="item2">
                     <i class="fas fa-calendar"></i>
                     <p>Vacunas</p>
                 </div>
             </a>
-            <a href="">
+            <a href="{{ route('appointmentsIndex') }}">
                 <div class="options" id="item3">
                     <i class="fas fa-calendar"></i>
                     <p>Citas</p>

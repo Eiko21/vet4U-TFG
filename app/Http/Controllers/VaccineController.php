@@ -20,6 +20,13 @@ class VaccineController extends Controller
             'vacunas' => Vaccine::all()->where('idMascota',$idmascota),
             'idmascota' => $idmascota]);
     }
+    public function indexclient()
+    {
+        $mascota = Pet::where('idDueño',Auth::user()->id)->first();
+        return view('vaccineViews.vaccineIndex', [
+            'vacunas' => Vaccine::all()->where('idMascota',$mascota->id),
+            'idmascota' => $mascota->id]);
+    }
 
     /**
      * Show the form for creating a new resource.

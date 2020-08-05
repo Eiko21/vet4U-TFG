@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PetSeeder::class,
             MedicalFileSeeder::class,
-            VaccineSeeder::class,            
+            VaccineSeeder::class,
+            HourSeeder::class,           
         ]);
     }
 }

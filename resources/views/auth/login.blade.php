@@ -17,7 +17,7 @@
                             <label id="emailabel" for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" value="veterinario@gmail.com"
+                                <input id="email" type="email" value="juan@gmail.com"
                                     class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -32,7 +32,7 @@
                             <label id="passwdLabel" for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" value="soyvet"
+                                <input id="password" type="password" value="soyjuan"
                                     class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')

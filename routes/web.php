@@ -45,7 +45,9 @@ Route::get('/imagenesficha/{idficha}','MedicalFileImageController@index')->name(
 Route::get('/imageneshistorialmedico/{idficha}/create','MedicalFileImageController@create')->name('createImages');
 Route::post('/imageneshistorialmedico/{idficha}','MedicalFileImageController@store')->name('storeImages');
 
-//Como dueño de mascota y veterinario
+//Como dueño de mascota
+Route::get('/vacunas','VaccineController@indexclient')->name('vaccineClientIndex');
+//Como veterinario
 Route::get('/vacunas/{idmascota}','VaccineController@index')->name('vaccineIndex');
 //Como veterinario
 Route::get('/vacunas/{idmascota}/create','VaccineController@create')->name('createVaccine');
@@ -56,4 +58,6 @@ Route::delete('/vacunas/{id}/{idmascota}','VaccineController@destroy')->name('de
 Route::get('/citas','AppointmentController@index')->name('appointmentsIndex');
 Route::get('/citas/create','AppointmentController@create')->name('createAppointment');
 Route::post('/citas','AppointmentController@store')->name('storeAppointment');
-
+Route::get('/citas/{idcita}/edit','AppointmentController@edit')->name('editAppointment');
+Route::put('/citas/{idcita}','AppointmentController@update')->name('updateAppointment');
+Route::delete('/citas/{idcita}','AppointmentController@destroy')->name('deleteAppointment');
