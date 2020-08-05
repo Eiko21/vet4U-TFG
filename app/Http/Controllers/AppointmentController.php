@@ -25,7 +25,7 @@ class AppointmentController extends Controller
                     $veterinario = User::all()->where('idVeterinario',Auth::user()->idVeterinario)->first();
                     $cita->veterinario = $veterinario->nombre;
                 }else if(Auth::user()->idRol == 2){
-                    $cliente = User::where('idDueño',$cita->idDueño)->first();
+                    $cliente = User::all()->where('id',$cita->idDueño)->first();
                     $cita->cliente = $cliente->nombre;
                 }
             }
@@ -40,8 +40,9 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        $clientes = User::all()->where('idVeterinario',Auth::user()->idVeterinario);
-        $veterinario = User::findOrFail(Auth::user()->idVeterinario);
+        if(Auth::user()->idRol == 2)
+            $clientes = User::all()->where('idVeterinario',Auth::user()->id);
+        else if(Auth::user()->idRol == 3) $veterinario = User::findOrFail(Auth::user()->idVeterinario);
         $horas = Hour::all();
         $citas = Appointment::all();
         $primerDiaSemana = Carbon::now()->startOfMonth();
@@ -55,9 +56,13 @@ class AppointmentController extends Controller
             }
             $primerDiaSemana->addDay();
         }
-        
-        return view('appointmentViews.appointmentCreate',['fechas' => $fechas, 'clientes' => $clientes, 
+        if(Auth::user()->idRol == 2){
+            return view('appointmentViews.appointmentCreate',['fechas' => $fechas, 'clientes' => $clientes,
+            'horas' => $horas, 'citas' => $citas]);
+        }else if(Auth::user()->idRol == 3){
+            return view('appointmentViews.appointmentCreate',['fechas' => $fechas, 
             'veterinario' => $veterinario,'horas' => $horas, 'citas' => $citas]);
+        }
     }
 
     /**
@@ -106,7 +111,7 @@ class AppointmentController extends Controller
 
         $primerDiaSemana = Carbon::now()->startOfMonth();
         $ultimoDiaSemana = Carbon::now()->endOfMonth();
-        
+
         $fechas = [];
         while ($primerDiaSemana->lte($ultimoDiaSemana)) {
             $diaLaboral = Carbon::parse($primerDiaSemana);

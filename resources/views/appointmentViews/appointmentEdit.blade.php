@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/appointmentStyle.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset('css/appointmentStyle.css') }}" rel="stylesheet"> --}}
 @endsection
 
 @section('content')

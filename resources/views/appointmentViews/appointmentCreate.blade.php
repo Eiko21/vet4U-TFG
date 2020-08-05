@@ -41,17 +41,18 @@
                                 <select name="idDueño">
                                     @foreach ($clientes as $cliente)
                                         <option value="{{ $cliente->id }}">{{ $cliente->nombre }}</option>   
-                                        <input type="hidden" name="idDueño" value="{{ $cliente->id }}">                                     
+                                        {{-- <input type="hidden" name="idDueño" value="{{ $cliente->id }}">                                      --}}
                                     @endforeach
                                 </select>
+                                <input type="hidden" name="idVeterinario" value="{{ Auth::user()->id }}">
                             </td>
                         @else
                             <td><label for="veterinario">Veterinario</label></td>
-                                <td>
-                                    <input type="text" name="cliente" value="{{ $veterinario->nombre }}" disabled>
-                                    <input type="hidden" name="idVeterinario" value="{{ $veterinario->id }}">
-                                    <input type="hidden" name="idDueño" value="{{ Auth::user()->id }}">
-                                </td>
+                            <td>
+                                <input type="text" name="cliente" value="{{ $veterinario->nombre }}" disabled>
+                                <input type="hidden" name="idVeterinario" value="{{ $veterinario->id }}">
+                                <input type="hidden" name="idDueño" value="{{ Auth::user()->id }}">
+                            </td>
                         @endif                       
                     </tr>                                
                     <tr>

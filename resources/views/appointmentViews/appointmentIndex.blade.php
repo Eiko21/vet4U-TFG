@@ -11,7 +11,7 @@
     <div class="create-appointment-section">
         <form action="{{ route('createAppointment') }}" method="GET">
             @csrf
-            <input type="submit" class="editappointment" name="editAppointment" value="Concertar cita">
+            <input type="submit" class="createappointment" name="createAppointment" value="Concertar cita">
         </form>
     </div>
     @if($citas->count() > 0)
