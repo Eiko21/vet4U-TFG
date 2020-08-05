@@ -10,7 +10,7 @@
         <h2>Selección de imágenes</h2>
     </div>
     <table>
-        <form action="{{ route('storeImages', ['idficha' => $idficha,'clientid' => $clientid]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('storeImages', ['idficha' => $idficha]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <tr>
                 <td><label for="imagenes">Seleccione las imágenes a subir</label></td>

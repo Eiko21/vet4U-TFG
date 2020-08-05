@@ -16,15 +16,13 @@
         <div class="empty-section">
             <p>Esta ficha no tiene imágenes</p>
         </div>
-    @endif 
-    @if (Auth::user()->idRol == 2)   
-        <div id="return-section">
-            {{-- <form class="returnForm" action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET"> --}}
-            <form class="returnForm" action="{{ route('medicalhistoryIndex') }}" method="GET">
-                @csrf
-                <input type="submit" class="return-btn" name="returnToMH" value="Volver al historial">
-            </form>
-        </div>                    
-    @endif
+    @endif   
+    <div id="return-section">
+        {{-- <form class="returnForm" action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET"> --}}
+        <form class="returnForm" action="{{ route('medicalhistoryIndex') }}" method="GET">
+            @csrf
+            <input type="submit" class="return-btn" name="returnToMH" value="Volver al historial">
+        </form>
+    </div>
 </div>
 @endsection

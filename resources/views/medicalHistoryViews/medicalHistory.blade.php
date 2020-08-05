@@ -43,12 +43,14 @@
                     </td>
                 </tr>
                 <tr align="center">
-                    <td>
-                        <form class="editForm" action="{{ route('editPetInfo', ['id' => $mascota->id, 'clientid' => $mascota->idDueño]) }}" method="GET">
-                            @csrf
-                            <input type="submit" class="editinfo" name="editInfo" value="Actualizar información">
-                        </form>
-                    </td>
+                    @if (Auth::user()->idRol == 2)
+                        <td>
+                            <form class="editForm" action="{{ route('editPetInfo', ['id' => $mascota->id, 'clientid' => $mascota->idDueño]) }}" method="GET">
+                                @csrf
+                                <input type="submit" class="editinfo" name="editInfo" value="Actualizar información">
+                            </form>
+                        </td>                        
+                    @endif
                     <td>
                         <form class="indexForm" action="{{ route('vaccineIndex', ['idmascota' => $mascota->id]) }}" method="GET">
                             @csrf
