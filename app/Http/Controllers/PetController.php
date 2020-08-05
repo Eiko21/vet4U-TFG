@@ -68,7 +68,7 @@ class PetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, $clientid)
+    public function update(Request $request, $id)
     {
         $mascota = Pet::findOrFail($id);
 
@@ -80,9 +80,8 @@ class PetController extends Controller
         if($request->esterilizacion == "Sí") $mascota->esterilizacion = true;
         else if($request->esterilizacion == "No") $mascota->esterilizacion = false;
 
-        $clientid = $request->clientid;
         $mascota->save();
-        return redirect(route('petMedicalHistoryIndex', compact('clientid')));
+        return redirect(route('medicalhistoryIndex'));
     }
 
     /**
