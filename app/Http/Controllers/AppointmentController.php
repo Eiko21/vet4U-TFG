@@ -150,7 +150,6 @@ class AppointmentController extends Controller
         $cita->fechaCita = $request->fechaCita;
         $cita->hora = $request->hora;
         $cita->tipoCita = $request->tipoCita;
-        // $cita->seleccionable = false;
 
         $cita->save();
         return redirect(route('appointmentsIndex'));

@@ -28,7 +28,6 @@ class UserController extends Controller
             }
             return view('userViews.clientIndex', compact('clientes'));
         }
-            
     }
 
     public function vetprofile(){
