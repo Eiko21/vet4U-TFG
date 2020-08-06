@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Como dueño de mascota y veterinario
 Route::get('/perfil','UserController@index')->name('userIndex');
 Route::get('/perfilveterinario','UserController@vetprofile')->name('vetIndex');
+Route::delete('/perfil/{id}','UserController@destroy')->name('deleteUser');
 
 // Como veterinario
 Route::get('/informacionmascota/{id}/edit', 'PetController@edit')->name('editPetInfo');
