@@ -105,10 +105,8 @@ class AppointmentController extends Controller
     public function edit($idcita)
     {
         $cita = Appointment::findOrFail($idcita);
-        // $cliente = User::findOrFail($cita->idDueño);
 
         if(Auth::user()->idRol == 2)
-            // $clientes = User::all()->where('idVeterinario',Auth::user()->id);
             $cliente = User::findOrFail($cita->idDueño);
         else if(Auth::user()->idRol == 3) $veterinario = User::findOrFail(Auth::user()->idVeterinario);
 

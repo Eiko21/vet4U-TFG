@@ -17,7 +17,6 @@ class MedicalFileController extends Controller
      */
     public function index($id)
     {
-        // $mascota = Pet::where('idDueño',Auth::user()->id)->orWhere('idVeterinario',Auth::user()->id)->first();
         $mascota = Pet::where('id',$id)->orWhere('idDueño',$id)->first();
         return view('medicalHistoryViews.medicalHistory', 
                         ['fichas' => MedicalFile::all()->where('idMascota',$mascota->id),

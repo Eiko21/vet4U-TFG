@@ -57,7 +57,6 @@ class PetController extends Controller
      */
     public function edit($id)
     {
-        // return view('petViews.petEdit', ['mascota' => Pet::findOrFail($id), 'clientid' => $clientid]);
         return view('petViews.petEdit', ['mascota' => Pet::findOrFail($id)]);
     }
 

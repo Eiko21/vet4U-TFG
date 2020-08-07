@@ -23,7 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Como dueño de mascota y veterinario
 Route::get('/perfil','UserController@index')->name('userIndex');
-// Route::get('/perfilveterinario','UserController@vetprofile')->name('vetIndex');
 
 //Como veterinario
 Route::get('/clientes','VetClientController@index')->name('clientIndex');
