@@ -29,9 +29,9 @@ class MedicalFileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($idmascota)
+    public function create($id)
     {
-        return view('medicalHistoryViews.fileCreate', compact('idmascota'));
+        return view('medicalHistoryViews.fileCreate', compact('id'));
     }
     
     /**
@@ -40,11 +40,11 @@ class MedicalFileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$idmascota)
+    public function store(Request $request,$id)
     {
         $ficha = new MedicalFile();
 
-        $ficha->idMascota = $idmascota;
+        $ficha->idMascota = $id;
         $ficha->fechaVisita = $request->fechaVisita;
         $ficha->motivoVisita = $request->motivoVisita;
         $ficha->examenFisico = $request->examenFisico;
@@ -57,7 +57,7 @@ class MedicalFileController extends Controller
         $ficha->operacionRealizada = $request->operacionRealizada;
 
         $ficha->save();
-        return redirect(route('medicalhistoryIndex'));
+        return redirect(route('medicalhistoryIndex',compact('id')));
     }
 
     /**
@@ -90,9 +90,9 @@ class MedicalFileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idficha, $id)
     {
-        $ficha = MedicalFile::findOrFail($id);
+        $ficha = MedicalFile::findOrFail($idficha);
 
         $ficha->fechaVisita = $request->fechaVisita;
         $ficha->motivoVisita = $request->motivoVisita;
@@ -106,7 +106,7 @@ class MedicalFileController extends Controller
         $ficha->operacionRealizada = $request->operacionRealizada;
 
         $ficha->save();
-        return redirect(route('medicalhistoryIndex'));
+        return redirect(route('medicalhistoryIndex', compact('id')));
     }
 
     /**
@@ -115,10 +115,10 @@ class MedicalFileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($idficha,$id)
     {
-        $ficha = MedicalFile::findOrFail($id);
+        $ficha = MedicalFile::findOrFail($idficha);
         $ficha->delete();
-        return redirect(route('medicalhistoryIndex'));
+        return redirect(route('medicalhistoryIndex', compact('id')));
     }
 }

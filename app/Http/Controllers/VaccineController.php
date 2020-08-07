@@ -14,18 +14,18 @@ class VaccineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($idmascota)
+    public function index($id)
     {
         return view('vaccineViews.vaccineIndex', [
-            'vacunas' => Vaccine::all()->where('idMascota',$idmascota),
-            'idmascota' => $idmascota]);
+            'vacunas' => Vaccine::all()->where('idMascota',$id),
+            'id' => $id]);
     }
     public function indexclient()
     {
         $mascota = Pet::where('idDueño',Auth::user()->id)->first();
         return view('vaccineViews.vaccineIndex', [
             'vacunas' => Vaccine::all()->where('idMascota',$mascota->id),
-            'idmascota' => $mascota->id]);
+            'id' => $mascota->id]);
     }
 
     /**
@@ -33,9 +33,9 @@ class VaccineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($idmascota)
+    public function create($id)
     {
-        return view('vaccineViews.createVaccine', ['idmascota' => $idmascota]);
+        return view('vaccineViews.createVaccine', ['id' => $id]);
     }
 
     /**
@@ -44,16 +44,16 @@ class VaccineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $idmascota)
+    public function store(Request $request, $id)
     {
         $vacuna = new Vaccine();
-        $vacuna->idMascota = $idmascota;
+        $vacuna->idMascota = $id;
         $vacuna->nombreVacuna = $request->nombreVacuna;
         $vacuna->fechaAplicacion = $request->fechaAplicacion;
         $vacuna->vencimiento = $request->vencimiento;
 
         $vacuna->save();
-        return redirect(route('vaccineIndex', compact('idmascota')));
+        return redirect(route('vaccineIndex', compact('id')));
     }
 
     /**
@@ -96,10 +96,10 @@ class VaccineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $idmascota)
+    public function destroy($idvacuna, $id)
     {
-        $vacuna = Vaccine::findOrFail($id);
+        $vacuna = Vaccine::findOrFail($idvacuna);
         $vacuna->delete();
-        return redirect(route('vaccineIndex', compact('idmascota')));
+        return redirect(route('vaccineIndex', compact('id')));
     }
 }

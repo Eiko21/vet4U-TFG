@@ -5,6 +5,12 @@
 @endsection
 
 @section('content')
+<div>
+    <form action="{{ route('home') }}" method="GET">
+        @csrf
+        <input type="submit" name="return-btn" value="Volver al menú">
+    </form>
+</div>
 <div class="medicalHistory-content">
     <div id="pet-info">
         <div id="pet-name">
@@ -42,28 +48,28 @@
                         @endif
                     </td>
                 </tr>
-                <tr align="center">
-                    @if (Auth::user()->idRol == 2)
+                @if (Auth::user()->idRol == 2)
+                    <tr align="center">
                         <td>
                             <form class="editForm" action="{{ route('editPetInfo', ['id' => $mascota->id]) }}" method="GET">
                                 @csrf
                                 <input type="submit" class="editinfo" name="editInfo" value="Actualizar información">
                             </form>
                         </td>                        
-                    @endif
-                    <td>
-                        <form class="indexForm" action="{{ route('vaccineIndex', ['idmascota' => $mascota->id]) }}" method="GET">
-                            @csrf
-                            <input type="submit" class="indexvaccines" name="indexVaccines" value="Ver vacunas">
-                        </form>
-                    </td>
-                </tr>
+                        <td>
+                            <form class="indexForm" action="{{ route('vaccineIndex', ['id' => $mascota->id]) }}" method="GET">
+                                @csrf
+                                <input type="submit" class="indexvaccines" name="indexVaccines" value="Ver vacunas">
+                            </form>
+                        </td>
+                    </tr>
+                @endif
             </table>
         </div>
     </div>
     @if (Auth::user()->idRol == 2)
         <div id="btn-section">
-            <form action="{{ route('createFile', ['idmascota' => $mascota->id]) }}" method="GET">
+            <form action="{{ route('createFile', ['id' => $mascota->id]) }}" method="GET">
                 @csrf
                 <input id="inputadd" type="submit" name="addFile" value="+">
             </form>
@@ -128,12 +134,12 @@
                     </tr>
                     <tr>
                         <td>
-                            <form class="indexForm" action="{{ route('indexImage',['idficha' => $ficha->id]) }}" 
+                            <form class="indexForm" action="{{ route('indexImage',['idficha' => $ficha->id, 'idmascota' => $ficha->idMascota]) }}" 
                                     method="GET">
                                     @csrf
                                 <input type="submit" class="indexImage" name="indeximage" value="Ver imágenes">
-                                <input type="hidden" name="idficha" value="{{ $ficha->id }}">
-                                <input type="hidden" name="clientid" value="{{ $mascota->idDueño }}">
+                                {{-- <input type="hidden" name="idficha" value="{{ $ficha->id }}"> --}}
+                                {{-- <input type="hidden" name="clientid" value="{{ $mascota->idDueño }}"> --}}
                             </form>
                         </td>
                     @if (Auth::user()->idRol == 2)
@@ -152,7 +158,7 @@
                             </form>
                         </td>
                         <td>
-                            <form class="deleteForm" action="{{ route('deleteFile',['id' => $ficha->id]) }}" 
+                            <form class="deleteForm" action="{{ route('deleteFile',['idficha' => $ficha->id, 'id' => $ficha->idMascota]) }}" 
                                     method="POST">
                                 <input type='hidden' name='_method' value='DELETE'>
                                 @csrf

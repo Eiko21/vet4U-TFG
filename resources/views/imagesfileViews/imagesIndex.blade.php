@@ -19,7 +19,7 @@
     @endif   
     <div id="return-section">
         {{-- <form class="returnForm" action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET"> --}}
-        <form class="returnForm" action="{{ route('medicalhistoryIndex') }}" method="GET">
+        <form class="returnForm" action="{{ route('medicalhistoryIndex', ['id' => $idmascota]) }}" method="GET">
             @csrf
             <input type="submit" class="return-btn" name="returnToMH" value="Volver al historial">
         </form>

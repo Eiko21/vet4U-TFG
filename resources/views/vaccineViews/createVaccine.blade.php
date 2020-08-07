@@ -11,7 +11,7 @@
             <tr>
                 <th>Nueva vacuna</th>
             </tr>
-            <form action="{{ route('storeVaccine', ['idmascota' => $idmascota]) }}" method="POST">
+            <form action="{{ route('storeVaccine', ['id' => $id]) }}" method="POST">
                 @csrf
                 <tr>
                     <td><label for="nombreVacuna">Vacuna aplicada</label></td>
@@ -39,7 +39,7 @@
             </form>
             <tr>
                 <td>
-                    <form action="{{ route('vaccineIndex', ['idmascota' => $idmascota]) }}" method="GET">
+                    <form action="{{ route('vaccineIndex', ['id' => $id]) }}" method="GET">
                         @csrf
                         <input type="submit" class="cancel-btn" name="cancelvaccine" value="Cancelar">
                     </form>

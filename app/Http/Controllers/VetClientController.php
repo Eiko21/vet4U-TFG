@@ -54,6 +54,9 @@ class VetClientController extends Controller
         $cliente->telefono = $request->telefono;
         $cliente->nombreMascota = $request->nombreMascota;
         $cliente->idVeterinario = Auth::user()->id;
+        
+        $usuario = User::where('email',$request->email)->first();
+        $cliente->idDueño = $usuario->id;
 
         $cliente->save();
         return redirect(route('clientIndex'));

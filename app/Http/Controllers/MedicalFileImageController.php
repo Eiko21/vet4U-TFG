@@ -12,11 +12,11 @@ class MedicalFileImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($idficha)
+    public function index($idficha,$idmascota)
     {
         return view('imagesfileViews.imagesIndex', 
             ['imagenes' => MedicalFileImage::all()->where('idFicha',$idficha),
-            'idficha' => $idficha]);
+            'idmascota' => $idmascota]);
     }
 
     /**

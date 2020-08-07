@@ -38,14 +38,14 @@ Route::put('/informacionmascota/{id}','PetController@update')->name('updatePetIn
 //Como dueño de mascota y veterinario
 Route::get('/historialmedico/{id}','MedicalFileController@index')->name('medicalhistoryIndex');
 //Como veterinario
-Route::get('/historialmedico/{idmascota}/create','MedicalFileController@create')->name('createFile');
-Route::post('/historialmedico/{idmascota}','MedicalFileController@store')->name('storeFile');
+Route::get('/historialmedico/{id}/create','MedicalFileController@create')->name('createFile');
+Route::post('/historialmedico/{id}','MedicalFileController@store')->name('storeFile');
 Route::get('/historialmedico/{id}/edit','MedicalFileController@edit')->name('editFile');
-Route::put('/historialmedico/{id}','MedicalFileController@update')->name('updateFile');
-Route::delete('/historialmedico/{id}','MedicalFileController@destroy')->name('deleteFile');
+Route::put('/historialmedico/{idficha}/{id}','MedicalFileController@update')->name('updateFile');
+Route::delete('/historialmedico/{idficha}/{id}','MedicalFileController@destroy')->name('deleteFile');
 
 //Como dueño de mascota y veterinario
-Route::get('/imagenesficha/{idficha}','MedicalFileImageController@index')->name('indexImage');
+Route::get('/imagenesficha/{idficha}/{idmascota}','MedicalFileImageController@index')->name('indexImage');
 //Como veterinario
 Route::get('/imageneshistorialmedico/{idficha}/create','MedicalFileImageController@create')->name('createImages');
 Route::post('/imageneshistorialmedico/{idficha}','MedicalFileImageController@store')->name('storeImages');
@@ -53,11 +53,11 @@ Route::post('/imageneshistorialmedico/{idficha}','MedicalFileImageController@sto
 //Como dueño de mascota
 Route::get('/vacunas','VaccineController@indexclient')->name('vaccineClientIndex');
 //Como veterinario
-Route::get('/vacunas/{idmascota}','VaccineController@index')->name('vaccineIndex');
+Route::get('/vacunas/{id}','VaccineController@index')->name('vaccineIndex');
 //Como veterinario
-Route::get('/vacunas/{idmascota}/create','VaccineController@create')->name('createVaccine');
-Route::post('/vacunas/{idmascota}','VaccineController@store')->name('storeVaccine');
-Route::delete('/vacunas/{id}/{idmascota}','VaccineController@destroy')->name('deleteVaccine');
+Route::get('/vacunas/{id}/create','VaccineController@create')->name('createVaccine');
+Route::post('/vacunas/{id}','VaccineController@store')->name('storeVaccine');
+Route::delete('/vacunas/{idvacuna}/{id}','VaccineController@destroy')->name('deleteVaccine');
 
 //Como dueño de mascota y veterinario
 Route::get('/citas','AppointmentController@index')->name('appointmentsIndex');

@@ -33,7 +33,7 @@
                 </div>
             </a>
         @else
-            <a href="{{ route('medicalhistoryIndex') }}">
+            <a href="{{ route('medicalhistoryIndex',['id' => Auth::user()->id]) }}">
                 <div class="options" id="item1">
                     <i class="fas fa-inbox"></i>
                     <p>Historial de tu mascota</p>

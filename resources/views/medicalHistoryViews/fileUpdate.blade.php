@@ -7,7 +7,7 @@
 @section('content')
     <div class="update-file">
         <table>
-            <form action="{{ route('updateFile',['id' => $ficha->id]) }}" method="POST">
+            <form action="{{ route('updateFile',['idficha' => $ficha->id, 'id' => $ficha->idMascota]) }}" method="POST">
                 <input type='hidden' name='_method' value='PUT'>
                 @csrf
                 <tr>

@@ -17,6 +17,8 @@ class VetClientsTable extends Migration
             $table->id();
             $table->unsignedBigInteger("idVeterinario");
             $table->foreign("idVeterinario")->references("id")->on("users")->onDelete("cascade");
+            $table->unsignedBigInteger("idDueño");
+            $table->foreign("idDueño")->references("id")->on("users")->onDelete("cascade");
             $table->string('nombreCliente');
             $table->string('email')->unique();
             $table->string('telefono');

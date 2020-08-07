@@ -61,6 +61,14 @@
                         </td>
                     </tr>
                 </form>
+                <tr>
+                    <td>
+                        <form action="{{ route('appointmentsIndex') }}" method="GET">
+                            @csrf
+                            <input type="submit" name="cancel-btn" value="Cancelar">
+                        </form>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>

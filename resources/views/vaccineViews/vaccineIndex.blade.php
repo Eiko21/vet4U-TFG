@@ -8,16 +8,23 @@
     <div class="title-vaccine-section">
         <h2>Vacunas aplicadas</h2>
     </div>
-    @if (Auth::user()->idRol == 2)
+    @if (Auth::user()->idRol == 3)
+    <div>
+        <form action="{{ route('home') }}" method="GET">
+            @csrf
+            <input type="submit" name="return-btn" value="Volver al menú">
+        </form>
+    </div>
+    @else
         <div class="create-vaccine-section">
             <div>
-                <form action="{{ route('createVaccine', ['idmascota' => $idmascota]) }}" method="GET">
+                <form action="{{ route('createVaccine', ['id' => $id]) }}" method="GET">
                     @csrf
                     <input type="submit" class="createvaccine" name="createVaccine" value="Añadir vacuna">
                 </form>
             </div>
             <div>
-                <form action="{{ route('medicalhistoryIndex', ['idmascota' => $idmascota]) }}" method="GET">
+                <form action="{{ route('medicalhistoryIndex', ['id' => $id]) }}" method="GET">
                     @csrf
                     <input type="submit" class="returnMH" name="returnMedicalHistory" value="Volver">
                 </form>
@@ -44,7 +51,7 @@
                         @if (Auth::user()->idRol == 2)
                             <tr>
                                 <td>
-                                    <form action="{{ route('deleteVaccine', ['id' => $vacuna->id, 'idmascota' => $idmascota]) }}" method="POST">
+                                    <form action="{{ route('deleteVaccine', ['idvacuna' => $vacuna->id, 'id' => $id]) }}" method="POST">
                                         <input type='hidden' name='_method' value='DELETE'>
                                         @csrf
                                         <input type="submit" class="deleteVaccine" name="deletevaccine" value="Eliminar vacuna">

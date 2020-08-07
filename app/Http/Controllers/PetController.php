@@ -81,7 +81,7 @@ class PetController extends Controller
         else if($request->esterilizacion == "No") $mascota->esterilizacion = false;
 
         $mascota->save();
-        return redirect(route('medicalhistoryIndex'));
+        return redirect(route('medicalhistoryIndex', compact('id')));
     }
 
     /**

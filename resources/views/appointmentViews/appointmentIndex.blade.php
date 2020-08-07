@@ -8,6 +8,12 @@
     <div class="title-appointment-section">
         <h2>Sus citas</h2>
     </div>
+    <div>
+        <form action="{{ route('home') }}" method="GET">
+            @csrf
+            <input type="submit" name="return-btn" value="Volver al menú">
+        </form>
+    </div>
     <div class="create-appointment-section">
         <form action="{{ route('createAppointment') }}" method="GET">
             @csrf

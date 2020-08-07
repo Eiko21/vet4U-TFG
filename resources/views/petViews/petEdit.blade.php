@@ -49,7 +49,7 @@
                 <tr>
                     <td>
                         {{-- <form action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET"> --}}
-                        <form action="{{ route('medicalhistoryIndex') }}" method="GET">
+                        <form action="{{ route('medicalhistoryIndex',['id' => $mascota->id]) }}" method="GET">
                             @csrf
                             <input type="submit" class="cancel-btn" name="cancelinfo" value="Cancelar">
                         </form>
