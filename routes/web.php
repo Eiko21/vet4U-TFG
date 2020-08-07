@@ -23,17 +23,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Como dueño de mascota y veterinario
 Route::get('/perfil','UserController@index')->name('userIndex');
-Route::get('/perfilveterinario','UserController@vetprofile')->name('vetIndex');
-Route::delete('/perfil/{id}','UserController@destroy')->name('deleteUser');
+// Route::get('/perfilveterinario','UserController@vetprofile')->name('vetIndex');
+
+//Como veterinario
+Route::get('/clientes','VetClientController@index')->name('clientIndex');
+Route::get('/clientes/create','VetClientController@create')->name('createClient');
+Route::post('/clientes','VetClientController@store')->name('storeClient');
+Route::delete('/clientes/{id}','VetClientController@destroy')->name('deleteClient');
 
 // Como veterinario
 Route::get('/informacionmascota/{id}/edit', 'PetController@edit')->name('editPetInfo');
 Route::put('/informacionmascota/{id}','PetController@update')->name('updatePetInfo');
 
 //Como dueño de mascota y veterinario
-Route::get('/historialmedico','MedicalFileController@index')->name('medicalhistoryIndex');
+Route::get('/historialmedico/{id}','MedicalFileController@index')->name('medicalhistoryIndex');
 //Como veterinario
-// Route::get('/historialmedico/{clientid}','MedicalFileController@vetIndex')->name('petMedicalHistoryIndex');
 Route::get('/historialmedico/{idmascota}/create','MedicalFileController@create')->name('createFile');
 Route::post('/historialmedico/{idmascota}','MedicalFileController@store')->name('storeFile');
 Route::get('/historialmedico/{id}/edit','MedicalFileController@edit')->name('editFile');

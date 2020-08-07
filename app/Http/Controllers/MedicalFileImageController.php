@@ -14,10 +14,6 @@ class MedicalFileImageController extends Controller
      */
     public function index($idficha)
     {
-        // return view('imagesfileViews.imagesIndex', 
-        //     ['imagenes' => MedicalFileImage::all()->where('idFicha',$idficha),
-        //     'idficha' => $idficha,
-        //     'clientid' => $clientid]);
         return view('imagesfileViews.imagesIndex', 
             ['imagenes' => MedicalFileImage::all()->where('idFicha',$idficha),
             'idficha' => $idficha]);
@@ -30,7 +26,6 @@ class MedicalFileImageController extends Controller
      */
     public function create($idficha)
     {
-        // return view('imagesfileViews.imagesCreate', compact('idficha','clientid'));
         return view('imagesfileViews.imagesCreate', compact('idficha'));
     }
 

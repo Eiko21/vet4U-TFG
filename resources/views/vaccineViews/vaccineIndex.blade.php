@@ -10,10 +10,18 @@
     </div>
     @if (Auth::user()->idRol == 2)
         <div class="create-vaccine-section">
-            <form action="{{ route('createVaccine', ['idmascota' => $idmascota]) }}" method="GET">
-                @csrf
-                <input type="submit" class="createvaccine" name="createVaccine" value="Añadir vacuna">
-            </form>
+            <div>
+                <form action="{{ route('createVaccine', ['idmascota' => $idmascota]) }}" method="GET">
+                    @csrf
+                    <input type="submit" class="createvaccine" name="createVaccine" value="Añadir vacuna">
+                </form>
+            </div>
+            <div>
+                <form action="{{ route('medicalhistoryIndex', ['idmascota' => $idmascota]) }}" method="GET">
+                    @csrf
+                    <input type="submit" class="returnMH" name="returnMedicalHistory" value="Volver">
+                </form>
+            </div>
         </div>
     @endif
     @if($vacunas->count() > 0)

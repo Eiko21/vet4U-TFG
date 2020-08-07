@@ -45,7 +45,7 @@
                 <tr align="center">
                     @if (Auth::user()->idRol == 2)
                         <td>
-                            <form class="editForm" action="{{ route('editPetInfo', ['id' => $mascota->id, 'clientid' => $mascota->idDueño]) }}" method="GET">
+                            <form class="editForm" action="{{ route('editPetInfo', ['id' => $mascota->id]) }}" method="GET">
                                 @csrf
                                 <input type="submit" class="editinfo" name="editInfo" value="Actualizar información">
                             </form>
@@ -63,7 +63,7 @@
     </div>
     @if (Auth::user()->idRol == 2)
         <div id="btn-section">
-            <form action="{{ route('createFile', ['idmascota' => $mascota->id, 'clientid' => $mascota->idDueño]) }}" method="GET">
+            <form action="{{ route('createFile', ['idmascota' => $mascota->id]) }}" method="GET">
                 @csrf
                 <input id="inputadd" type="submit" name="addFile" value="+">
             </form>
@@ -128,7 +128,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <form class="indexForm" action="{{ route('indexImage',['idficha' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                            <form class="indexForm" action="{{ route('indexImage',['idficha' => $ficha->id]) }}" 
                                     method="GET">
                                     @csrf
                                 <input type="submit" class="indexImage" name="indeximage" value="Ver imágenes">
@@ -138,21 +138,21 @@
                         </td>
                     @if (Auth::user()->idRol == 2)
                         <td>
-                            <form class="uploadForm" action="{{ route('createImages',['idficha' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                            <form class="uploadForm" action="{{ route('createImages',['idficha' => $ficha->id]) }}" 
                                 method="GET">
                                 @csrf
                                 <input type="submit" class="uploadImage" name="uploadimage" value="Subir imágenes">
                             </form>
                         </td>
                         <td>
-                            <form class="editForm" action="{{ route('editFile',['id' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                            <form class="editForm" action="{{ route('editFile',['id' => $ficha->id]) }}" 
                                     method="GET">
                                 @csrf
                                 <input type="submit" class="editFile" name="editfile" value="Actualizar ficha">
                             </form>
                         </td>
                         <td>
-                            <form class="deleteForm" action="{{ route('deleteFile',['id' => $ficha->id, 'clientid'=> $mascota->idDueño]) }}" 
+                            <form class="deleteForm" action="{{ route('deleteFile',['id' => $ficha->id]) }}" 
                                     method="POST">
                                 <input type='hidden' name='_method' value='DELETE'>
                                 @csrf

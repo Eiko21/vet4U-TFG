@@ -8,7 +8,7 @@
 <div class="home-content">
     <div class="grid-content">
         @if(Auth::user()->idRol == 2)
-            <a href="{{ route('userIndex') }}">
+            <a href="{{ route('clientIndex') }}">
                 <div class="options" id="item1">
                     <i class="fas fa-users"></i>
                     <p>Clientes</p>
@@ -26,7 +26,7 @@
                     <p>Agenda</p>
                 </div>
             </a>
-            <a href="{{ route('vetIndex') }}">
+            <a href="{{ route('userIndex') }}">
                 <div class="options" id="item4">
                     <i class="fas fa-user"></i>
                     <p>Tu perfil</p>

@@ -15,21 +15,14 @@ class MedicalFileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $mascota = Pet::where('idDueño',Auth::user()->id)->orWhere('idVeterinario',Auth::user()->id)->first();
+        // $mascota = Pet::where('idDueño',Auth::user()->id)->orWhere('idVeterinario',Auth::user()->id)->first();
+        $mascota = Pet::where('id',$id)->orWhere('idDueño',$id)->first();
         return view('medicalHistoryViews.medicalHistory', 
                         ['fichas' => MedicalFile::all()->where('idMascota',$mascota->id),
                         'mascota' => $mascota]);
     }
-
-    // public function vetIndex($clientid)
-    // {
-    //     $mascota = Pet::where('idDueño',$clientid)->first();
-    //     return view('medicalHistoryViews.medicalHistory', 
-    //                     ['fichas' => MedicalFile::all()->where('idMascota',$mascota->id),
-    //                     'mascota' => $mascota]);
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -39,7 +32,6 @@ class MedicalFileController extends Controller
     public function create($idmascota)
     {
         return view('medicalHistoryViews.fileCreate', compact('idmascota'));
-        // return view('medicalHistoryViews.fileCreate', compact('idmascota','clientid'));
     }
     
     /**
@@ -64,11 +56,8 @@ class MedicalFileController extends Controller
         $ficha->pruebaRealizada = $request->pruebaRealizada;
         $ficha->operacionRealizada = $request->operacionRealizada;
 
-        // $clientid = $request->clientid;
-
         $ficha->save();
         return redirect(route('medicalhistoryIndex'));
-        // return redirect(route('petMedicalHistoryIndex', compact('clientid')));
     }
 
     /**
@@ -116,11 +105,8 @@ class MedicalFileController extends Controller
         $ficha->pruebaRealizada = $request->pruebaRealizada;
         $ficha->operacionRealizada = $request->operacionRealizada;
 
-        // $clientid = $request->clientid;
-
         $ficha->save();
         return redirect(route('medicalhistoryIndex'));
-        // return redirect(route('petMedicalHistoryIndex', compact('clientid')));
     }
 
     /**

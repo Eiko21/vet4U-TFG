@@ -48,4 +48,8 @@ class User extends Authenticatable
     public function citas(){
         return $this->hasMany('App\Appointment');
     }
+
+    public function clientes(){
+        return $this->hasMany('App\VetClient');
+    }
 }

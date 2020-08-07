@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\VetClient;
 use App\User;
 use App\Pet;
 
-class UserController extends Controller
+class VetClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('userViews.userIndex', ['user' => User::findOrFail(Auth::user()->id)]);
+        return view('userViews.clientIndex',['clientes' => VetClient::all()->where('idVeterinario',Auth::user()->id)]);
     }
-
-    // public function vetprofile(){
-    //     return view('userViews.vetIndex', ['user' => User::findOrFail(Auth::user()->id)]);
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +27,16 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $usuarios = User::all()->where('idRol',3);
+        if($usuarios->count() > 0){
+            foreach ($usuarios as $usuario) {
+                $mascotas = Pet::all()->where('idDueño',$usuario->id);
+                foreach ($mascotas as $mascota) {
+                    $usuario->nombreMascota = $mascota->nombre;
+                }
+            }
+        }
+        return view('userViews.clientCreate', ['usuarios' => $usuarios]);
     }
 
     /**
@@ -41,7 +47,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = new VetClient();
+        
+        $cliente->nombreCliente = $request->nombreCliente;
+        $cliente->email = $request->email;
+        $cliente->telefono = $request->telefono;
+        $cliente->nombreMascota = $request->nombreMascota;
+        $cliente->idVeterinario = Auth::user()->id;
+
+        $cliente->save();
+        return redirect(route('clientIndex'));
     }
 
     /**
@@ -86,6 +101,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cliente = VetClient::findOrFail($id);
+        $cliente->delete();
+        return redirect(route('clientIndex'));
     }
 }
