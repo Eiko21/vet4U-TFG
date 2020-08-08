@@ -15,14 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Como dueño de mascota y veterinario
-Route::get('/perfil','UserController@index')->name('userIndex');
+Route::get('/perfil/{id}','UserController@show')->name('userShow');
+Route::get('/perfil/{id}/edit','UserController@edit')->name('userEdit');
+Route::put('/perfil/{id}','UserController@update')->name('userUpdate');
+Route::delete('/perfil/{id}','UserController@destroy')->name('userDestroy');
 
 //Como veterinario
 Route::get('/clientes','VetClientController@index')->name('clientIndex');

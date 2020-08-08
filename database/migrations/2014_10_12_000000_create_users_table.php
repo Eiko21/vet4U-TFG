@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('password');
             $table->integer("idVeterinario")->nullable();
+            $table->string('imagen')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -26,7 +26,7 @@
                     <p>Agenda</p>
                 </div>
             </a>
-            <a href="{{ route('userIndex') }}">
+            <a href="{{ route('userShow',['id' => Auth::user()->id]) }}">
                 <div class="options" id="item4">
                     <i class="fas fa-user"></i>
                     <p>Tu perfil</p>
@@ -52,7 +52,7 @@
                     <p>Citas</p>
                 </div>
             </a>
-            <a href="{{ route('userIndex') }}">
+            <a href="{{ route('userShow',['id' => Auth::user()->id]) }}">
                 <div class="options" id="item4">
                     <i class="fas fa-user"></i>
                     <p>Tu perfil</p>

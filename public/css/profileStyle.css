@@ -14,10 +14,15 @@
 }
 
 .profile-img{
-    width: 100%;
-    border-radius: 57%;
-    background-color: rgb(156, 156, 156);
-    border: 0.05px solid black;
+    width: 60%;
+    /* border-radius: 57%; */
+    /* background-color: rgb(156, 156, 156); */
+    /* border: 0.05px solid black; */
+    margin: 20% auto;
+}
+
+.profile-img img{
+    border-radius: 5%;
 }
 
 .information{

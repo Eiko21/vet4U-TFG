@@ -117,6 +117,11 @@ class MedicalFileController extends Controller
     public function destroy($idficha,$id)
     {
         $ficha = MedicalFile::findOrFail($idficha);
+        if(!empty($ficha->imagen)){
+            if(file_exists(public_path('/images/'.$ficha->imagen))){
+                unlink(public_path('/images/'.$ficha->imagen));
+            }
+        }
         $ficha->delete();
         return redirect(route('medicalhistoryIndex', compact('id')));
     }

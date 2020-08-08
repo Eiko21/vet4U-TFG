@@ -16,12 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('userViews.userIndex', ['user' => User::findOrFail(Auth::user()->id)]);
+        //
     }
-
-    // public function vetprofile(){
-    //     return view('userViews.vetIndex', ['user' => User::findOrFail(Auth::user()->id)]);
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -52,7 +48,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $usuario = User::findOrFail(Auth::user()->id);
+        if($usuario->idRol == 3) {
+            return view('userViews.userShow', ['usuario' => $usuario, 
+                'veterinario' => User::findOrFail($usuario->idVeterinario)]);
+        }else return view('userViews.userShow', ['usuario' => $usuario]);
     }
 
     /**
@@ -63,7 +63,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('userViews.userEdit', ['usuario' => User::findOrFail($id),
+                    'veterinarios' => User::all()->where('idRol',2)]);
     }
 
     /**
@@ -75,7 +76,25 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = User::findOrFail($id);
+
+        if($request->hasFile('imagen')){
+            $filenameWithExt = $request->file('imagen')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('imagen')->getClientOriginalExtension();
+            $fileNameToStore = $filename.'_' .time().'.' .$extension;
+            $path=$request->file('imagen')->move(public_path('/images'), $fileNameToStore);
+            $usuario->imagen=$fileNameToStore;
+        }
+
+        $usuario->nombre = $request->nombre;
+        $usuario->apellidos = $request->apellidos;
+        $usuario->email = $request->email;
+        $usuario->telefono = $request->telefono;
+        $usuario->idVeterinario = $request->idVeterinario;
+
+        $usuario->save();
+        return redirect(route('userShow',compact('id')));
     }
 
     /**
@@ -86,6 +105,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::findOrFail($id);
+        if(!empty($usuario->imagen)){
+            if(file_exists(public_path('/images/'.$usuario->imagen))){
+                unlink(public_path('/images/'.$usuario->imagen));
+            }
+        }
+        $usuario->delete();
+        return redirect(route('welcome'));
     }
 }
