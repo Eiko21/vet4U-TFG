@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\Task;
 
 class TaskController extends Controller
@@ -15,7 +16,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('scheduleViews.scheduleIndex',['tareas' => Task::all()->where('idVeterinario',Auth::user()->id)->sortByDesc('fechaTarea')]);
+        return view('scheduleViews.scheduleIndex',['tareas' => Task::where('idVeterinario',Auth::user()->id)->whereDate('fechaTarea',Carbon::now())->get()]);
+    }
+    public function nextTasksindex()
+    {
+        return view('scheduleViews.scheduleNextTasksIndex',['tareas' => Task::where('idVeterinario',Auth::user()->id)->whereDate('fechaTarea','>',Carbon::now())->get()]);
     }
 
     /**
@@ -81,7 +86,7 @@ class TaskController extends Controller
         $tarea->descripcionTarea = $request->descripcionTarea;
         $tarea->fechaTarea = $request->fechaTarea;
         $tarea->save();
-        return redirect(route('indexTasks'));
+        return redirect(route('indexNextTasks'));
     }
 
     /**

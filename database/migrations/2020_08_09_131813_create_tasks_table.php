@@ -20,7 +20,6 @@ class CreateTasksTable extends Migration
             $table->string('tituloTarea');
             $table->text('descripcionTarea');
             $table->date('fechaTarea');
-            $table->boolean('completada')->default(false);
             $table->timestamps();
         });
     }

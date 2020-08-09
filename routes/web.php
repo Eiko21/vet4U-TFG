@@ -71,6 +71,7 @@ Route::delete('/citas/{idcita}','AppointmentController@destroy')->name('deleteAp
 
 //Como veterinario
 Route::get('/tareas','TaskController@index')->name('indexTasks');
+Route::get('/proximastareas','TaskController@nextTasksindex')->name('indexNextTasks');
 Route::get('/tareas/create','TaskController@create')->name('createTask');
 Route::post('/tareas','TaskController@store')->name('storeTask');
 Route::get('/tareas/{idtarea}/edit','TaskController@edit')->name('editTask');

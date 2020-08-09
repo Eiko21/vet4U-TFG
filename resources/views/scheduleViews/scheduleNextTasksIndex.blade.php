@@ -6,16 +6,10 @@
 
 @section('content')
 <div class="title-section"><h2>Tus tareas</h2></div>
-<div class="add-task-section">
-    <form action="{{ route('createTask') }}" method="get">
-        @csrf
-        <input type="submit" class="addtask" name="addTask" value="Añadir nueva tarea">
-    </form>
-</div>
 <div class="next-task-section">
-    <form action="{{ route('indexNextTasks') }}" method="get">
+    <form action="{{ route('indexTasks') }}" method="get">
         @csrf
-        <input type="submit" class="nexttasks" name="nextTasks" value="Próximas tareas">
+        <input type="submit" class="nexttasks" name="nextTasks" value="Volver">
     </form>
 </div>
 <div class="schedule-content">

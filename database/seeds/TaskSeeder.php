@@ -19,8 +19,7 @@ class TaskSeeder extends Seeder
                 'descripcionTarea' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
                     Laborum maxime doloribus commodi quisquam quos nam est nostrum ipsa voluptate architecto minima possimus eius quis tempore, 
                     cumque incidunt temporibus in sapiente!', 
-                'fechaTarea' => Carbon::now()->addDay(),
-                'completada' => false
+                'fechaTarea' => Carbon::now()->addDay()
             ],
             [
                 'idVeterinario' => 3,
@@ -28,8 +27,7 @@ class TaskSeeder extends Seeder
                 'descripcionTarea' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
                     Laborum maxime doloribus commodi quisquam quos nam est nostrum ipsa voluptate architecto minima possimus eius quis tempore, 
                     cumque incidunt temporibus in sapiente!', 
-                'fechaTarea' => Carbon::now(),
-                'completada' => false
+                'fechaTarea' => Carbon::now()
             ],
             [
                 'idVeterinario' => 3,
@@ -37,8 +35,7 @@ class TaskSeeder extends Seeder
                 'descripcionTarea' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
                     Laborum maxime doloribus commodi quisquam quos nam est nostrum ipsa voluptate architecto minima possimus eius quis tempore, 
                     cumque incidunt temporibus in sapiente!',
-                'fechaTarea' => Carbon::createFromDate(2020,8,8),
-                'completada' => false
+                'fechaTarea' => Carbon::createFromDate(2020,8,8)
             ],
             [
                 'idVeterinario' => 3,
@@ -46,8 +43,7 @@ class TaskSeeder extends Seeder
                 'descripcionTarea' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
                     Laborum maxime doloribus commodi quisquam quos nam est nostrum ipsa voluptate architecto minima possimus eius quis tempore, 
                     cumque incidunt temporibus in sapiente!',
-                'fechaTarea' => Carbon::createFromDate(2020,8,8),
-                'completada' => false
+                'fechaTarea' => Carbon::createFromDate(2020,8,8)
             ],
         ]);
     }
