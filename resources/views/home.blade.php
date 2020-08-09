@@ -33,31 +33,40 @@
                 </div>
             </a>
         @else
-            <a href="{{ route('medicalhistoryIndex',['id' => Auth::user()->id]) }}">
-                <div class="options" id="item1">
-                    <i class="fas fa-inbox"></i>
-                    <p>Historial de tu mascota</p>
+            @if (Auth::user()->idRol == 3)
+                <a href="{{ route('medicalhistoryIndex',['id' => Auth::user()->id]) }}">
+                    <div class="options" id="item1">
+                        <i class="fas fa-inbox"></i>
+                        <p>Historial de tu mascota</p>
 
-                </div>
-            </a>
-            <a href="{{ route('vaccineClientIndex') }}">
-                <div class="options" id="item2">
-                    <i class="fas fa-calendar"></i>
-                    <p>Vacunas</p>
-                </div>
-            </a>
-            <a href="{{ route('appointmentsIndex') }}">
-                <div class="options" id="item3">
-                    <i class="fas fa-calendar"></i>
-                    <p>Citas</p>
-                </div>
-            </a>
-            <a href="{{ route('userShow',['id' => Auth::user()->id]) }}">
-                <div class="options" id="item4">
-                    <i class="fas fa-user"></i>
-                    <p>Tu perfil</p>
-                </div>
-            </a>
+                    </div>
+                </a>
+                <a href="{{ route('vaccineClientIndex') }}">
+                    <div class="options" id="item2">
+                        <i class="fas fa-calendar"></i>
+                        <p>Vacunas</p>
+                    </div>
+                </a>
+                <a href="{{ route('appointmentsIndex') }}">
+                    <div class="options" id="item3">
+                        <i class="fas fa-calendar"></i>
+                        <p>Citas</p>
+                    </div>
+                </a>
+                <a href="{{ route('userShow',['id' => Auth::user()->id]) }}">
+                    <div class="options" id="item4">
+                        <i class="fas fa-user"></i>
+                        <p>Tu perfil</p>
+                    </div>
+                </a>
+            @else
+                <a href="{{ route('usersIndex') }}">
+                    <div class="options" id="item3">
+                        <i class="fas fa-calendar"></i>
+                        <p>Usuarios registrados</p>
+                    </div>
+                </a>
+            @endif            
         @endif
     </div>
 </div>

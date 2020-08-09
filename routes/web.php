@@ -21,10 +21,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Como administrador
+Route::get('/usuariosregistrados','UserController@index')->name('usersIndex');
+
 //Como dueño de mascota y veterinario
 Route::get('/perfil/{id}','UserController@show')->name('userShow');
 Route::get('/perfil/{id}/edit','UserController@edit')->name('userEdit');
 Route::put('/perfil/{id}','UserController@update')->name('userUpdate');
+
+//Como administrador (dueño de mascota y veterinario, en caso de implementarlo)
 Route::delete('/perfil/{id}','UserController@destroy')->name('userDestroy');
 
 //Como veterinario
@@ -56,7 +61,6 @@ Route::post('/imageneshistorialmedico/{idficha}','MedicalFileImageController@sto
 Route::get('/vacunas','VaccineController@indexclient')->name('vaccineClientIndex');
 //Como veterinario
 Route::get('/vacunas/{id}','VaccineController@index')->name('vaccineIndex');
-//Como veterinario
 Route::get('/vacunas/{id}/create','VaccineController@create')->name('createVaccine');
 Route::post('/vacunas/{id}','VaccineController@store')->name('storeVaccine');
 Route::delete('/vacunas/{idvacuna}/{id}','VaccineController@destroy')->name('deleteVaccine');

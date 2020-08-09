@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Pet;
+use App\Rol;
 
 class UserController extends Controller
 {
@@ -16,7 +17,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = User::all()->where('idRol','!=',1);
+        if($usuarios->count() > 0){
+            foreach ($usuarios as $usuario) {
+                $usuario->rol = Rol::findOrFail($usuario->idRol)->rol;
+            }
+        }
+        return view('userViews.usersIndex', ['usuarios' => $usuarios]);
     }
 
     /**
@@ -111,7 +118,13 @@ class UserController extends Controller
                 unlink(public_path('/images/'.$usuario->imagen));
             }
         }
-        $usuario->delete();
-        return redirect(route('welcome'));
+        
+        if(Auth::user()->idRol == 1) {
+            $usuario->delete();
+            return redirect(route('usersIndex'));
+        }else{
+            $usuario->delete();
+            return redirect(route('welcome'));
+        }
     }
 }
