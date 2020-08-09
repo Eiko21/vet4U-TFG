@@ -20,7 +20,7 @@
                     <p>Citas</p>
                 </div>
             </a>
-            <a href="">
+            <a href="{{ route('indexTasks') }}">
                 <div class="options" id="item3">
                     <i class="fas fa-list"></i>
                     <p>Agenda</p>

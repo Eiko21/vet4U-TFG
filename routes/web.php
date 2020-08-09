@@ -68,3 +68,11 @@ Route::post('/citas','AppointmentController@store')->name('storeAppointment');
 Route::get('/citas/{idcita}/edit','AppointmentController@edit')->name('editAppointment');
 Route::put('/citas/{idcita}','AppointmentController@update')->name('updateAppointment');
 Route::delete('/citas/{idcita}','AppointmentController@destroy')->name('deleteAppointment');
+
+//Como veterinario
+Route::get('/tareas','TaskController@index')->name('indexTasks');
+Route::get('/tareas/create','TaskController@create')->name('createTask');
+Route::post('/tareas','TaskController@store')->name('storeTask');
+Route::get('/tareas/{idtarea}/edit','TaskController@edit')->name('editTask');
+Route::put('/tareas/{idtarea}','TaskController@update')->name('updateTask');
+Route::delete('/tareas/{idtarea}','TaskController@destroy')->name('deleteTask');

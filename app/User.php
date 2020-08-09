@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function clientes(){
         return $this->hasMany('App\VetClient');
     }
+
+    public function tareas(){
+        return $this->hasMany('App\Task');
+    }
 }
