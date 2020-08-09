@@ -177,7 +177,7 @@
                             icon: "warning",
                             buttons: {
                                 cancel: "Cancelar",
-                                confirm: "Confirmar eliminación"
+                                confirm: "Eliminar ficha"
                             },
                             dangerMode: true,
                         })

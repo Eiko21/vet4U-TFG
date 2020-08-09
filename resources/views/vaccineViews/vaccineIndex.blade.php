@@ -69,7 +69,7 @@
                                 icon: "warning",
                                 buttons: {
                                     cancel: "Cancelar",
-                                    confirm: "Confirmar eliminación"
+                                    confirm: "Eliminar vacuna"
                                 },
                                 dangerMode: true,
                             })

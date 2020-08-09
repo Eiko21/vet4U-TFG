@@ -69,7 +69,7 @@
                                 icon: "warning",
                                 buttons: {
                                     cancel: "Cancelar",
-                                    confirm: "Confirmar cancelación"
+                                    confirm: "Cancelar cita"
                                 },
                                 dangerMode: true,
                             })

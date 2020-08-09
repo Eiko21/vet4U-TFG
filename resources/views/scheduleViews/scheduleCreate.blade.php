@@ -24,7 +24,7 @@
                     <td><textarea name="descripcionTarea" cols="30" rows="10" required></textarea></td>
                 </tr>
                 <tr>
-                    <td> <input type="submit" class="update-btn" name="updateTask" value="Actualizar"></td>
+                    <td> <input type="submit" class="create-btn" name="createTask" value="Crear tarea"></td>
                 </tr>
             </form>
             <tr>

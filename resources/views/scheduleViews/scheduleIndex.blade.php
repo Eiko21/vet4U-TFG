@@ -40,18 +40,36 @@
                         <td>
                             <form action="{{ route('editTask', ['idtarea' => $tarea->id]) }}" method="get">
                                 @csrf
-                                <input type="submit" class="edit-btn" name="editTask" value="Editar">
+                                <input type="submit" class="edittask" name="editTask" value="Editar">
                             </form>
                         </td>
                         <td>
-                            <form action="" method="post">
+                            <form action="{{ route('deleteTask', ['idtarea' => $tarea->id]) }}" method="post">
                                 <input type="hidden" name="_method" value="DELETE">
                                 @csrf
-                                <input type="submit" class="delete-btn" name="deleteTask" value="Eliminar">
+                                <input type="submit" class="deletetask" name="deleteTask" value="Eliminar">
                             </form>
                         </td>
                     </tr>
                 </table>
+                <script>
+                    $('input.deletetask').on('click', function(e){
+                        e.preventDefault();
+                        swal({
+                            title: "¿Está seguro de que desea eliminar la tarea?",
+                            text: "Una vez eliminada no se podrá recuperar",
+                            icon: "warning",
+                            buttons: {
+                                cancel: "Cancelar",
+                                confirm: "Eliminar tarea"
+                            },
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) $(this).closest("form").submit();
+                        });
+                    });
+                </script>
             </div>
         @endforeach
     @else

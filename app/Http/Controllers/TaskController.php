@@ -25,7 +25,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('scheduleViews.scheduleCreate');
     }
 
     /**
@@ -36,7 +36,13 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tarea = new Task();
+        $tarea->idVeterinario = Auth::user()->id;
+        $tarea->tituloTarea = $request->tituloTarea;
+        $tarea->descripcionTarea = $request->descripcionTarea;
+        $tarea->fechaTarea = $request->fechaTarea;
+        $tarea->save();
+        return redirect(route('indexTasks'));
     }
 
     /**
@@ -86,6 +92,8 @@ class TaskController extends Controller
      */
     public function destroy($idtarea)
     {
-        //
+        $tarea = Task::findOrFail($idtarea);
+        $tarea->delete();
+        return redirect(route('indexTasks'));
     }
 }

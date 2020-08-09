@@ -54,7 +54,7 @@
                     icon: "warning",
                     buttons: {
                         cancel: "Cancelar",
-                        confirm: "Confirmar cancelación"
+                        confirm: "Eliminar cliente"
                     },
                     dangerMode: true,
                 })
