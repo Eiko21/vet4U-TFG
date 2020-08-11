@@ -30,9 +30,9 @@
                             <label for="idRol" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
 
                             <div class="col-md-6">
-                                <input id="idRol" type="checkbox" class="form-control @error('idRol') is-invalid @enderror" name="idRol" 
-                                    value="3" autocomplete="idRol" autofocus>Cliente
-                                <input id="idRol" type="checkbox" class="form-control @error('idRol') is-invalid @enderror" name="idRol" 
+                                <input id="idRol" type="radio" class="form-control @error('idRol') is-invalid @enderror" name="idRol" 
+                                    value="3" autocomplete="idRol" autofocus>Dueño de mascota
+                                <input id="idRol" type="radio" class="form-control @error('idRol') is-invalid @enderror" name="idRol" 
                                     value="2" autocomplete="idRol" autofocus>Veterinario
 
                                 @error('idRol')
@@ -42,7 +42,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row2">
+                        <div class="form-group row2" id="surname-section">
                             <label for="apellidos" class="col-md-4 col-form-label text-md-right">{{ __('Apellidos') }}</label>
 
                             <div class="col-md-6">
@@ -55,7 +55,14 @@
                                 @enderror
                             </div>
                         </div>
-
+                        <script>
+                            $(function() {
+                                $('div[id="surname-section"]').hide();
+                                $('input[id="idRol"]').click(function() {
+                                    $(this).val() === '3' ? $('div[id="surname-section"]').show() : $('div[id="surname-section"]').hide();
+                                });
+                            });
+                        </script>
                         <div class="form-group row2">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
 

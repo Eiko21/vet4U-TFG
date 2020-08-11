@@ -55,11 +55,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $usuario = User::findOrFail(Auth::user()->id);
-        if($usuario->idRol == 3) {
-            return view('userViews.userShow', ['usuario' => $usuario, 
-                'veterinario' => User::findOrFail($usuario->idVeterinario)]);
-        }else return view('userViews.userShow', ['usuario' => $usuario]);
+        return view('userViews.userShow', ['usuario' => User::findOrFail(Auth::user()->id)]);
     }
 
     /**

@@ -36,12 +36,6 @@
                 <td><label for="telefono">Teléfono</label></td>
                 <td><p>{{ $usuario->telefono }}</p></td>
             </tr>
-            @if (Auth::user()->idRol == 3)
-                <tr>
-                    <td><label for="veterinario">Veterinario</label></td>
-                    <td><p>{{ $veterinario->nombre }}</p></td>
-                </tr>                
-            @endif
             <tr>
                 <td>
                     <form action="{{ route('userEdit', ['id' => $usuario->id]) }}" method="get">
@@ -53,11 +47,29 @@
                     <form action="{{ route('userDestroy', ['id' => $usuario->id]) }}" method="post">
                         <input type='hidden' name='_method' value='DELETE'>
                         @csrf
-                        <input type="submit" class="delete-btn" name="deleteAccount" value="Eliminar cuenta">
+                        <input type="submit" id="inputdelete" class="delete-btn" name="deleteAccount" value="Eliminar cuenta">
                     </form>
                 </td>
             </tr>
         </table>
+        <script>
+            $('input#inputdelete').on('click', function(e){
+                e.preventDefault();
+                swal({
+                    title: "¿Está seguro de que desea eliminar su cuenta?",
+                    text: "Si la elimina no podrá acceder a la información",
+                    icon: "warning",
+                    buttons: {
+                        cancel: "Cancelar",
+                        confirm: "Eliminar cuenta"
+                    },
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) $(this).closest("form").submit();
+                });
+            });
+        </script>
     </div>
 </div>
 @endsection
