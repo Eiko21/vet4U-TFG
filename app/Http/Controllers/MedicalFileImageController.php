@@ -24,9 +24,9 @@ class MedicalFileImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($idficha)
+    public function create($idficha, $idmascota)
     {
-        return view('imagesfileViews.imagesCreate', compact('idficha'));
+        return view('imagesfileViews.imagesCreate', compact('idficha','idmascota'));
     }
 
     /**
@@ -35,7 +35,7 @@ class MedicalFileImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $idficha)
+    public function store(Request $request, $idficha, $idmascota)
     {
         // $imagenes = array();
         // if($request->hasFile('imagen')){
@@ -60,7 +60,7 @@ class MedicalFileImageController extends Controller
 
         $imagenFicha->idFicha = $idficha;
         $imagenFicha->save();
-        return redirect(route('indexImage', compact('idficha')));
+        return redirect(route('indexImage', compact('idficha', 'idmascota')));
     }
 
     /**

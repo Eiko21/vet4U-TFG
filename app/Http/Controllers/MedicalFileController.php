@@ -18,9 +18,11 @@ class MedicalFileController extends Controller
     public function index($id)
     {
         $mascota = Pet::where('id',$id)->orWhere('idDueño',$id)->first();
-        return view('medicalHistoryViews.medicalHistory', 
+        if($mascota->count() > 0) 
+            return view('medicalHistoryViews.medicalHistory', 
                         ['fichas' => MedicalFile::all()->where('idMascota',$mascota->id),
                         'mascota' => $mascota]);
+        else return view('medicalHistoryViews.noMedicalHistory');
     }
 
     /**
