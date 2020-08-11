@@ -71,7 +71,7 @@
         <div id="btn-section">
             <form action="{{ route('createFile', ['id' => $mascota->id]) }}" method="GET">
                 @csrf
-                <input id="inputadd" type="submit" name="addFile" value="+">
+                <input id="inputadd" type="submit" name="addFile" value="Añadir nueva ficha">
             </form>
         </div>
     @endif
@@ -138,13 +138,11 @@
                                     method="GET">
                                     @csrf
                                 <input type="submit" class="indexImage" name="indeximage" value="Ver imágenes">
-                                {{-- <input type="hidden" name="idficha" value="{{ $ficha->id }}"> --}}
-                                {{-- <input type="hidden" name="clientid" value="{{ $mascota->idDueño }}"> --}}
                             </form>
                         </td>
                     @if (Auth::user()->idRol == 2)
                         <td>
-                            <form class="uploadForm" action="{{ route('createImages',['idficha' => $ficha->id]) }}" 
+                            <form class="uploadForm" action="{{ route('createImages',['idficha' => $ficha->id,'idmascota' => $ficha->idMascota]) }}" 
                                 method="GET">
                                 @csrf
                                 <input type="submit" class="uploadImage" name="uploadimage" value="Subir imágenes">

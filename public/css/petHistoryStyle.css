@@ -45,16 +45,24 @@ table{
 }
 
 #btn-section #inputadd{
-    height: 4%;
+    /* height: 4%;
     width: 2.5%;
     line-height: 200%;
     font-size: 20px;
     font-weight: bold;
     border-radius: 50%;
     border: none;
-    background-color: #4CAF50;
+    
     color: white;
     text-align: center;
+    cursor: pointer; */
+
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5%;
+    border: none;
+    color: white;
+    background-color: #4CAF50;
     cursor: pointer;
 }
 
