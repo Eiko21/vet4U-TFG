@@ -41,16 +41,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Rol', 'idRol');
     }
 
-    public function isAdmin(){
-        return $this->idRol === 1 ? true : false;
-    }
-    public function isVeterinario(){
-        return $this->idRol === 2 ? true : false;
-    }
-    public function isDueñoDeMascota(){
-        return $this->idRol === 3 ? true : false;
-    }
-
     public function mascotas(){
         return $this->hasMany('App\Pet');
     }
