@@ -21,6 +21,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::middleware(['auth','checkRole:veterinario'])->group(function(){
+    Route::get('/exportaciones', function(){
+        return view('importExportViews.exports');
+    })->name('exports');
+    Route::get('/importaciones', function(){
+        return view('importExportViews.imports');
+    })->name('imports');
+});
+
 Route::middleware(['auth','checkRole:admin'])->group(function(){
     Route::get('/usuariosregistrados','UserController@index')->name('usersIndex');
 });
@@ -40,6 +49,10 @@ Route::middleware(['auth','checkRole:veterinario'])->group(function(){
     Route::get('/clientes/create','VetClientController@create')->name('createClient');
     Route::post('/clientes','VetClientController@store')->name('storeClient');
     Route::delete('/clientes/{id}','VetClientController@destroy')->name('deleteClient');
+
+    Route::get('/exportarclientes', 'VetClientController@exportVetClients')->name('exportClients');
+    Route::post('/importarclientes', 'VetClientController@importVetClients')->name('importClients');
+
     Route::get('/informacionmascota/{id}/edit', 'PetController@edit')->name('editPetInfo');
     Route::put('/informacionmascota/{id}','PetController@update')->name('updatePetInfo');
 });
@@ -54,6 +67,9 @@ Route::middleware(['auth','checkRole:veterinario'])->group(function(){
     Route::get('/historialmedico/{id}/edit','MedicalFileController@edit')->name('editFile');
     Route::put('/historialmedico/{idficha}/{id}','MedicalFileController@update')->name('updateFile');
     Route::delete('/historialmedico/{idficha}/{id}','MedicalFileController@destroy')->name('deleteFile');
+
+    Route::get('/exportarhistoriales', 'MedicalFileController@exportMedicalFiles')->name('exportMedicalFiles');
+    Route::post('/importarhistoriales', 'MedicalFileController@importMedicalFiles')->name('importMedicalFiles');
 });
 
 Route::middleware(['auth','checkRole:veterinario,cliente'])->group(function(){
@@ -74,6 +90,9 @@ Route::middleware(['auth','checkRole:veterinario'])->group(function(){
     Route::get('/vacunas/{id}/create','VaccineController@create')->name('createVaccine');
     Route::post('/vacunas/{id}','VaccineController@store')->name('storeVaccine');
     Route::delete('/vacunas/{idvacuna}/{id}','VaccineController@destroy')->name('deleteVaccine');
+
+    Route::get('/exportarvacunas', 'VaccineController@exportVaccines')->name('exportVaccines');
+    Route::post('/importarvacunas', 'VaccineController@importVaccines')->name('importVaccines');
 });
 
 Route::middleware(['auth','checkRole:veterinario,cliente'])->group(function(){
@@ -86,6 +105,8 @@ Route::middleware(['auth','checkRole:veterinario,cliente'])->group(function(){
 });
 
 Route::middleware(['auth','checkRole:veterinario'])->group(function(){
+    Route::get('/exportarcitas', 'AppointmentController@exportAppointments')->name('exportAppointments');
+
     Route::get('/tareas','TaskController@index')->name('indexTasks');
     Route::get('/proximastareas','TaskController@nextTasksindex')->name('indexNextTasks');
     Route::get('/tareas/create','TaskController@create')->name('createTask');
@@ -93,4 +114,7 @@ Route::middleware(['auth','checkRole:veterinario'])->group(function(){
     Route::get('/tareas/{idtarea}/edit','TaskController@edit')->name('editTask');
     Route::put('/tareas/{idtarea}','TaskController@update')->name('updateTask');
     Route::delete('/tareas/{idtarea}','TaskController@destroy')->name('deleteTask');
+
+    Route::get('/exportartareas', 'TaskController@exportTasks')->name('exportTasks');
+    Route::post('/importartareas', 'TaskController@importTasks')->name('importTasks');
 });

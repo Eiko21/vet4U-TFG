@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Task;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\TasksExport;
+use App\Imports\TasksImport;
+
 class TaskController extends Controller
 {
     /**
@@ -100,5 +104,14 @@ class TaskController extends Controller
         $tarea = Task::findOrFail($idtarea);
         $tarea->delete();
         return redirect(route('indexTasks'));
+    }
+
+    public function exportTasks(){
+        return Excel::download(new TasksExport, 'lista-tareas.xlsx');
+    }
+    public function importTasks(Request $request){
+        $file = $request->file('fileTask');
+        Excel::import(new TasksImport,$file);
+        return back()->with('message', 'Importación de tareas completada');
     }
 }

@@ -29,15 +29,6 @@
                     </tr>
                     <tr>
                         <td>
-                            @if ($tarea->completada)
-                                <input type="checkbox" name="completada" value="{{ $tarea->completada }}" checked>Tarea completada
-                            @else
-                            <input type="checkbox" name="completada" value="{{ $tarea->completada }}">Tarea completada
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             <form action="{{ route('editTask', ['idtarea' => $tarea->id]) }}" method="get">
                                 @csrf
                                 <input type="submit" class="edittask" name="editTask" value="Editar">

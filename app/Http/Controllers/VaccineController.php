@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Vaccine;
 use App\Pet;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\VaccinesExport;
+use App\Imports\VaccinesImport;
+
 class VaccineController extends Controller
 {
     /**
@@ -101,5 +105,14 @@ class VaccineController extends Controller
         $vacuna = Vaccine::findOrFail($idvacuna);
         $vacuna->delete();
         return redirect(route('vaccineIndex', compact('id')));
+    }
+
+    public function exportVaccines(){
+        return Excel::download(new VaccinesExport, 'listado-vacunas.xlsx');
+    }
+    public function importVaccines(Request $request){
+        $file = $request->file('fileVaccine');
+        Excel::import(new VaccinesImport,$file);
+        return back()->with('message', 'Importación de vacunas completada');
     }
 }

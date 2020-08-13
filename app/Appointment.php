@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
+    protected $fillable = [
+        'idDueño', 'idVeterinario','fechaCita', 'hora', 'tipoCita',
+    ];
+
     protected $table = 'appointments';
 
     public function usuarios(){

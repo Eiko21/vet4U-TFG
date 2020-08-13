@@ -8,6 +8,10 @@ use App\MedicalFile;
 use App\MedicalFileImage;
 use App\Pet;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MedicalFilesExport;
+use App\Imports\MedicalFilesImport;
+
 class MedicalFileController extends Controller
 {
     /**
@@ -126,5 +130,14 @@ class MedicalFileController extends Controller
         }
         $ficha->delete();
         return redirect(route('medicalhistoryIndex', compact('id')));
+    }
+
+    public function exportMedicalFiles(){
+        return Excel::download(new MedicalFilesExport, 'listado-historiales.xlsx');
+    }
+    public function importMedicalFiles(Request $request){
+        $file = $request->file('fileMedicalFile');
+        Excel::import(new MedicalFilesImport,$file);
+        return back()->with('message', 'Importación de historiales completada');
     }
 }

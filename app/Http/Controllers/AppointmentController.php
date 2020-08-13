@@ -9,6 +9,10 @@ use App\User;
 use App\Hour;
 use Carbon\Carbon;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\VaccinesExport;
+use App\Imports\VaccinesImport;
+
 class AppointmentController extends Controller
 {
     /**
@@ -164,5 +168,9 @@ class AppointmentController extends Controller
         $cita = Appointment::findOrFail($idcita);
         $cita->delete();
         return redirect(route('appointmentsIndex'));
+    }
+
+    public function exportAppointments(){
+        return Excel::download(new AppointmentsExport, 'listado-citas.xlsx');
     }
 }

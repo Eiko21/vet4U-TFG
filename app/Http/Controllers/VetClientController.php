@@ -8,6 +8,10 @@ use App\VetClient;
 use App\User;
 use App\Pet;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\VetClientsExport;
+use App\Imports\VetClientsImport;
+
 class VetClientController extends Controller
 {
     /**
@@ -107,5 +111,14 @@ class VetClientController extends Controller
         $cliente = VetClient::findOrFail($id);
         $cliente->delete();
         return redirect(route('clientIndex'));
+    }
+
+    public function exportVetClients(){
+        return Excel::download(new VetClientsExport, 'listado-clientes.xlsx');
+    }
+    public function importVetClients(Request $request){
+        $file = $request->file('fileClient');
+        Excel::import(new VetClientsImport,$file);
+        return back()->with('message', 'Importación de clientes completada');
     }
 }
