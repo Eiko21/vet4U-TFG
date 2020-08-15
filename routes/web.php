@@ -52,7 +52,14 @@ Route::middleware(['auth','checkRole:veterinario'])->group(function(){
 
     Route::get('/exportarclientes', 'VetClientController@exportVetClients')->name('exportClients');
     Route::post('/importarclientes', 'VetClientController@importVetClients')->name('importClients');
+});
 
+Route::middleware(['auth','checkRole:cliente'])->group(function(){
+    Route::get('/registrarmascota/create','PetController@create')->name('createPet');
+    Route::post('/registrarmascota','PetController@store')->name('storePet');
+});
+
+Route::middleware(['auth','checkRole:veterinario'])->group(function(){
     Route::get('/informacionmascota/{id}/edit', 'PetController@edit')->name('editPetInfo');
     Route::put('/informacionmascota/{id}','PetController@update')->name('updatePetInfo');
 });

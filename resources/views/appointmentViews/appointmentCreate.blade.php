@@ -40,8 +40,7 @@
                             <td>
                                 <select name="idDueño">
                                     @foreach ($clientes as $cliente)
-                                        <option value="{{ $cliente->id }}">{{ $cliente->nombre }}</option>   
-                                        {{-- <input type="hidden" name="idDueño" value="{{ $cliente->id }}">                                      --}}
+                                        <option value="{{ $cliente->id }}">{{ $cliente->nombre }}</option>
                                     @endforeach
                                 </select>
                                 <input type="hidden" name="idVeterinario" value="{{ Auth::user()->id }}">

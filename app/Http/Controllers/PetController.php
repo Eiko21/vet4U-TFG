@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Pet;
+use App\User;
 
 class PetController extends Controller
 {
@@ -24,7 +26,7 @@ class PetController extends Controller
      */
     public function create()
     {
-        //
+        return view('petViews.petCreate', ['veterinarios' => User::where('idRol', 2)->get()]);
     }
 
     /**
@@ -35,7 +37,25 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mascota = new Pet();
+        $idDueño = Auth::user()->id;
+        
+        $mascota->idDueño = $idDueño;
+        $mascota->idVeterinario = $request->idVeterinario;
+        $mascota->nombre = $request->nombre;
+        $mascota->chip = $request->chip;
+        $mascota->especie = $request->especie;
+        $mascota->raza = $request->raza;
+        $mascota->nacimiento = $request->nacimiento;
+        $mascota->sexo = $request->sexo;
+        $mascota->estatura = $request->estatura;
+        $mascota->peso = $request->peso;
+        if($request->esterilizacion == "Sí") $mascota->esterilizacion = true;
+        else if($request->esterilizacion == "No") $mascota->esterilizacion = false;
+
+        $mascota->save();
+        $id = $mascota->id;
+        return redirect(route('medicalhistoryIndex', compact('id')));
     }
 
     /**

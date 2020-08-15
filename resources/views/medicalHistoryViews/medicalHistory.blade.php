@@ -36,7 +36,15 @@
                 </tr>
                 <tr>
                     <td><label for="estatura">Estatura</label></td>
-                    <td>{{ $mascota->estatura }}</td>
+                    <td>{{ $mascota->estatura }}cm</td>
+                </tr>
+                <tr>
+                    <td><label for="peso">Peso</label></td>
+                    <td>{{ $mascota->peso }}kg</td>
+                </tr>
+                <tr>
+                    <td><label for="sexo">Sexo</label></td>
+                    <td>{{ $mascota->sexo }}</td>
                 </tr>
                 <tr>
                     <td><label for="esterilizacion">Esterilizado</label></td>
