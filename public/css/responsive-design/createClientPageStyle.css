@@ -1,0 +1,55 @@
+.newClientContent{
+    display: grid;
+    grid-template-areas: "titulo"
+                        "formulario";
+}
+
+.newClientContent .title-form-create{
+    grid-area: titulo;
+    text-align: center;
+}
+.newClientContent .form-create-client{
+    grid-area: formulario;
+    margin: 0 auto;
+}
+
+input[type=text] {
+    width: 100%;
+    height: 40px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    outline: none;
+    border-radius: 4px;
+}
+
+input[type=text]:focus {
+    border: 2px solid #555;
+}
+
+select {
+    width: 100%;
+    height: 40px;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+input[type=submit]{
+    border: none;
+    color: white;
+    padding: 14px 27px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+input.createClient{
+    background-color: green;
+}
+input.cancelBtn{
+    background-color: red;
+}

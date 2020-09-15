@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Nunito', sans-serif;
+    background-color: #E9ECF4;
+    font-weight: 100;
+}
+
+.content{
+    width: 90%;
+    max-width: 1000px;
+    margin: 135px auto;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: "title button1"
+                        "image button1";
+}
+
+.content .title{
+    grid-area: title;
+    font-size: 60px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.content .links{
+    grid-area: button1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input[type=submit]{
+    background-color: #12203E;
+    border: none;
+    color: white;
+    padding: 14px 27px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+input[type=submit]:hover{
+    background-color: #fAA43D;
+}
+
+.content .principalImage{
+    grid-area: image;
+    text-align: center;
+}
+.principalImage img{
+    width: 50%;
+}
+

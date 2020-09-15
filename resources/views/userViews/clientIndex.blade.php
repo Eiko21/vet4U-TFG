@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/clientListStyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/responsive-design/clientPageStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
     </div>
     <div class="information">
         @if ($clientes->count() > 0)
-            <table>
+            <table class="tableClient">
                 <tr>
                     <th>Nombre</th>
                     <th>Correo electrónico</th>

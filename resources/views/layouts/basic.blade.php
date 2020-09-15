@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/layoutBasicStyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive-design/basicLayoutStyle.css') }}" rel="stylesheet">
 
     <!-- Libraries -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -26,39 +26,41 @@
 
 </head>
 <body>
-    <header id='section-nav'>
-        <nav id='home-nav'>
-            <div class="title m-b-md">
-                <a id="homelink" href="{{ route('home') }}">Vet<p class="titleFor">For</p>U</a>
-            </div>
-            <div id="spacer"></div>
-            <div class="user-name">{{ Auth::user()->nombre }}</div>
-            <div id="logout-div" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">{{ __('Cerrar sesión') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </div>
-            @if (Auth::user()->idRol == 2)
-                <div id="export-div" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('exports') }}">{{ __('Exportar datos') }}</a>
-
+    <div class="contenedor">
+        <header id='section-nav'>
+            {{-- <nav id='home-nav'> --}}
+                <div class="title m-b-md">
+                    <a id="homelink" href="{{ route('home') }}">VetForU</a>
                 </div>
-                <div id="import-div">
-                    <a class="dropdown-item" href="{{ route('imports') }}">{{ __('Importar datos') }}</a>
+                {{-- <div id="spacer"></div> --}}
+                <div class="user-name">{{ Auth::user()->nombre }}</div>
+                @if (Auth::user()->idRol == 2)
+                    <div id="export-div" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('exports') }}">{{ __('Exportar datos') }}</a>
+    
+                    </div>
+                    <div id="import-div">
+                        <a class="dropdown-item" href="{{ route('imports') }}">{{ __('Importar datos') }}</a>
+                    </div>
+                @endif
+                <div id="logout-div" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">{{ __('Cerrar sesión') }}
+                    </a>
+    
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
-            @endif
-        </nav>
-    </header>
-    <section id="section-body">
-        @yield('content')
-    </section>
-    <footer>
-        <p>©Vet4U 2020</p>
-    </footer>
+            {{-- </nav> --}}
+        </header>
+        <section id="section-body">
+            @yield('content')
+        </section>
+        <footer id="section-footer">
+            <p>©Vet4U 2020</p>
+        </footer>
+    </div>
 </body>
 </html>

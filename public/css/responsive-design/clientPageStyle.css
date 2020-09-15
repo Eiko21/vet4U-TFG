@@ -1,0 +1,48 @@
+.list-content{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: "botonNuevoCliente"
+                        "listadoClientes";
+}
+
+input[type=submit]{
+    border: none;
+    color: white;
+    padding: 14px 27px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.list-content .create-client-section{
+    grid-area: botonNuevoCliente;
+    margin-left: 20px;
+}
+input.createclient{
+    background-color: green;
+}
+
+.list-content .information{
+    grid-area: listadoClientes;
+    margin: 0 20px;
+}
+
+.information .tableClient{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+.tableClient th, td {
+    text-align: left;
+    padding: 8px;
+}
+  
+th {
+    background-color: #fAA43D;
+    color: white;
+}
+
+input#inputdelete{
+    background-color: red;
+}
