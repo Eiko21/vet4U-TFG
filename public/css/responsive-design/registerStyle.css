@@ -12,7 +12,7 @@ body{
 .container{
     width: 90%;
     max-width: 1000px;
-    margin: 100px;
+    margin: 20px 110px;
     display: grid;
     grid-gap: 15px;
     grid-template-areas: "space title space"
@@ -29,13 +29,12 @@ body{
 }
 
 .container .card-body{
-    /* grid-column: 2/3; */
     grid-area: form;
     grid-row: 3/4;
     background-color: white;
     border-radius: 4px;
     text-align: center;
-    padding: 95px 90px;
+    padding: 60px 90px;
 }
 .card-body label{
     font-size: 20px;
@@ -47,9 +46,9 @@ body{
     text-align: center;
 }
 
-input[type=email],input[type=password]{
+input[type=email],input[type=password],input[type=text]{
     width: 90%;
-    height: 40px;
+    height: 35px;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -57,9 +56,6 @@ input[type=email],input[type=password]{
     outline: none;
     border-radius: 4px;
 }
-/* input[type=email],input[type=password]:hover{
-    border: 2px solid #555;
-} */
 
 button[type=submit]{
     background-color: #12203E;
@@ -73,4 +69,8 @@ button[type=submit]{
 }
 button[type=submit]:hover{
     background-color: #fAA43D;
+}
+
+input[type=radio]{
+    cursor: pointer;
 }
