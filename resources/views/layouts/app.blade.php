@@ -19,7 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/loginRegisterStyle.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/loginRegisterStyle.css') }}" rel="stylesheet"> --}}
+    @yield('csslinks')
 </head>
 <body>
     <div id="app">

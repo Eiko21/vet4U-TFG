@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Nunito', sans-serif;
+    background-color: #E9ECF4;
+    font-weight: 100;
+}
+
+.container{
+    width: 90%;
+    max-width: 1000px;
+    margin: 100px;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-areas: "space title space"
+                        "space form space"
+                        "space phrase space";
+}
+
+.container .title{
+    grid-area: title;
+    grid-column: 2/3;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.container .card-body{
+    /* grid-column: 2/3; */
+    grid-area: form;
+    grid-row: 3/4;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 95px 90px;
+}
+.card-body label{
+    font-size: 20px;
+}
+
+.container #registerLink{
+    grid-area: phrase;
+    grid-row: 4/5;
+    text-align: center;
+}
+
+input[type=email],input[type=password]{
+    width: 90%;
+    height: 40px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    outline: none;
+    border-radius: 4px;
+}
+input[type=email],input[type=password]:hover{
+    border: 2px solid #555;
+}
+
+button[type=submit]{
+    background-color: #12203E;
+    border: none;
+    color: white;
+    padding: 14px 27px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+button[type=submit]:hover{
+    background-color: #fAA43D;
+}
