@@ -12,19 +12,6 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <div class="form-group row1">
-                <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
-
-                <div class="col-md-6">
-                    <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}" required autocomplete="nombre" autofocus>
-
-                    @error('nombre')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
             <div class="form-group row2">
                 <label for="idRol" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de perfil') }}</label>
 
@@ -41,6 +28,29 @@
                     @enderror
                 </div>
             </div>
+            <script>
+                $(function() {
+                    $('div[id="surname-section"]').hide();
+                    $('input[id="idRol"]').click(function() {
+                        $(this).val() === '3' ? $('div[id="surname-section"]').show() : $('div[id="surname-section"]').hide();
+                    });
+                });
+            </script>
+            
+            <div class="form-group row1">
+                <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
+
+                <div class="col-md-6">
+                    <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}" required autocomplete="nombre" autofocus>
+
+                    @error('nombre')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            
             <div class="form-group row2" id="surname-section">
                 <label for="apellidos" class="col-md-4 col-form-label text-md-right">{{ __('Apellidos') }}</label>
 
@@ -54,14 +64,7 @@
                     @enderror
                 </div>
             </div>
-            <script>
-                $(function() {
-                    $('div[id="surname-section"]').hide();
-                    $('input[id="idRol"]').click(function() {
-                        $(this).val() === '3' ? $('div[id="surname-section"]').show() : $('div[id="surname-section"]').hide();
-                    });
-                });
-            </script>
+            
             <div class="form-group row2">
                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo electrónico') }}</label>
 
