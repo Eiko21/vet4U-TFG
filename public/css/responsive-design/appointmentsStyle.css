@@ -42,11 +42,6 @@ input[type=submit]{
 form .cancelAppointment{ background-color: red; }
 form .editAppointment{ background-color: lightskyblue; }
 
-/* .client-appointment .tableAppointment{
-    border-collapse: collapse;
-    width: 100%;
-    text-align: center;
-} */
 .tableAppointment{
     border-collapse: collapse;
     width: 90%;
