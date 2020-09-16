@@ -1,19 +1,20 @@
 @extends('layouts.basic')
 
 @section('styles')
-{{-- <link href="{{ asset('css/appointmentStyle.css') }}" rel="stylesheet"> --}}
+<link href="{{ asset('css/responsive-design/appointmentsStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
+<div class="container">
     <div class="title-appointment-section">
         <h2>Sus citas</h2>
     </div>
-    <div>
+    {{-- <div class="return-button-section">
         <form action="{{ route('home') }}" method="GET">
             @csrf
-            <input type="submit" name="return-btn" value="Volver al menú">
+            <input type="submit" class="returnbtn" name="return-btn" value="Volver al menú">
         </form>
-    </div>
+    </div> --}}
     <div class="create-appointment-section">
         <form action="{{ route('createAppointment') }}" method="GET">
             @csrf
@@ -22,68 +23,64 @@
     </div>
     @if($citas->count() > 0)
         <div id="client-appointment">
-            @foreach ($citas as $cita)
-                <div class="appointment">
-                    <table>
-                        <tr>
-                            <td><label for="fechaCita">Fecha y hora concertada</label></td>
-                            <td>{{ $cita->fechaCita }} a las {{ $cita->hora }}h</td>
-                        </tr>
-                        <tr>
-                            <td><label for="tipoCita">Lugar</label></td>
-                            <td>{{ $cita->tipoCita }}</td>
-                        </tr>
+                <table class="tableAppointment">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Lugar</th>
                         @if (Auth::user()->idRol == 2)
-                            <tr>
-                                <td><label for="cliente">Cliente</label></td>
-                                <td>{{ $cita->cliente }}</td>
-                            </tr>   
-                        @else
-                            <tr>
-                                <td><label for="veterinario">Veterinario</label></td>
-                                <td>{{ $cita->veterinario }}</td>
-                            </tr>
-                        @endif                       
+                            <th>Cliente</th>
+                        @endif 
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    @foreach ($citas as $cita)
                         <tr>
+                            <td>{{ $cita->fechaCita }}</td>
+                            <td>{{ $cita->hora }}h</td>
+                            <td>{{ $cita->tipoCita }}</td>
+                            @if (Auth::user()->idRol == 2)
+                                <td>{{ $cita->cliente }}</td>
+                            @endif
                             <td>
                                 <form action="{{ route('deleteAppointment',['idcita' => $cita->id]) }}" method="POST">
                                     <input type='hidden' name='_method' value='DELETE'>
                                     @csrf
-                                    <input type="submit" class="cancelAppointment" name="cancelappointment" value="Cancelar cita">
+                                    <input type="submit" class="cancelAppointment" name="cancelappointment" value="Cancelar">
                                 </form>
                             </td>
                             <td>
                                 <form action="{{ route('editAppointment',['idcita' => $cita->id]) }}" method="GET">
                                     @csrf
-                                    <input type="submit" class="editAppointment" name="editappointment" value="Cambiar cita">
+                                    <input type="submit" class="editAppointment" name="editappointment" value="Cambiar">
                                 </form>
                             </td>
                         </tr>
-                    </table>
-                    <script>
-                        $('input.cancelAppointment').on('click', function(e){
-                            e.preventDefault();
-                            swal({
-                                title: "¿Está seguro de que desea cancelar la cita?",
-                                text: "Una vez cancelada deberá concertar una nueva",
-                                icon: "warning",
-                                buttons: {
-                                    cancel: "Cancelar",
-                                    confirm: "Cancelar cita"
-                                },
-                                dangerMode: true,
-                            })
-                            .then((willDelete) => {
-                                if (willDelete) $(this).closest("form").submit();
-                            });
+                    @endforeach
+                </table>
+                <script>
+                    $('input.cancelAppointment').on('click', function(e){
+                        e.preventDefault();
+                        swal({
+                            title: "¿Está seguro de que desea cancelar la cita?",
+                            text: "Una vez cancelada deberá concertar una nueva",
+                            icon: "warning",
+                            buttons: {
+                                cancel: "Cancelar",
+                                confirm: "Cancelar cita"
+                            },
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) $(this).closest("form").submit();
                         });
-                    </script>
-                </div>
-            @endforeach
+                    });
+                </script>
         </div>
     @else
         <div id="emptyList">
             <p>No tiene ninguna cita concertada</p>
         </div>
     @endif
+</div>
 @endsection

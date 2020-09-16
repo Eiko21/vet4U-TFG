@@ -5,13 +5,10 @@
 @endsection
 
 @section('content')
-<div>
-    <form action="{{ route('home') }}" method="GET">
-        @csrf
-        <input type="submit" name="return-btn" value="Volver al menú">
-    </form>
-</div>
 <div class="profile-content">
+    <div class="username">
+        <h1>{{ $usuario->nombre }} {{ $usuario->apellidos }}</h1>
+    </div>
     <div class="profile-img">
         @if ($usuario->imagen != null)
             <img src="{{ asset('images/'.$usuario->imagen) }}" width="200" height="200">
@@ -21,26 +18,24 @@
     </div>
     <div class="information">
         <table>
-            <tr>
+            {{-- <tr>
                 <td id="nombre">
-                    <label for="nombre">
-                        {{ $usuario->nombre }} {{ $usuario->apellidos }}
-                    </label>
+                    <label for="nombre">{{ $usuario->nombre }} {{ $usuario->apellidos }}</label>                    
                 </td>
-            </tr>
-            <tr>
+            </tr> --}}
+            <tr class="email">
                 <td><label for="email">Correo electrónico</label></td>
                 <td><p>{{ $usuario->email }}<p></td>
             </tr>
-            <tr>
+            <tr class="phone">
                 <td><label for="telefono">Teléfono</label></td>
                 <td><p>{{ $usuario->telefono }}</p></td>
             </tr>
-            <tr>
+            <tr class="buttons">
                 <td>
                     <form action="{{ route('userEdit', ['id' => $usuario->id]) }}" method="get">
                         @csrf
-                        <input type="submit" class="edit-btn" name="editUser" value="Actualizar información">
+                        <input type="submit" class="edit-btn" name="editUser" value="Actualizar perfil">
                     </form>
                 </td>
                 <td>

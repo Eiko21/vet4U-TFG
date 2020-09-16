@@ -1,0 +1,39 @@
+.profile-content{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: "name name"
+                        "image information";
+}
+
+.profile-content .username{
+    grid-area: name;
+    grid-column: span 2;
+    text-align: center;
+    border-bottom: 0.5px solid lightgray;
+    padding: 5px 0;
+    margin-bottom: 10px;
+}
+
+.profile-content .profile-img{
+    grid-area: image;
+    text-align: center;
+}
+
+.profile-content .information{
+    grid-area: information;
+}
+
+label{ font-weight: bold; }
+
+input.edit-btn, input.delete-btn{
+    border: none;
+    color: white;
+    padding: 14px 27px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+input.edit-btn{ background-color: lightblue; }
+input.delete-btn{ background-color: red; }

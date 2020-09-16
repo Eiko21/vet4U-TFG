@@ -1,0 +1,65 @@
+.container{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: "title"
+                        "buttons"
+                        "appointments";
+}
+
+.container .title-appointment-section{
+    grid-area: title;
+    text-align: center;
+}
+.container .create-appointment-section{
+    grid-area: buttons;
+}
+.create-appointment-section .createappointment{
+    border: none;
+    color: white;
+    padding: 14px 27px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: green;    
+}
+
+.container #emptyList, .container .client-appointment{
+    grid-area: appointments;
+}
+
+label{ font-weight: bold; }
+
+input[type=submit]{
+    border: none;
+    color: white;
+    padding: 14px 27px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+form .cancelAppointment{ background-color: red; }
+form .editAppointment{ background-color: lightskyblue; }
+
+/* .client-appointment .tableAppointment{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+} */
+.tableAppointment{
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto;
+}
+.tableAppointment th, td {
+    text-align: center;
+    padding: 8px;
+}
+  
+th {
+    background-color: #fAA43D;
+    color: white;
+}
+
+
