@@ -1,0 +1,37 @@
+.home-content{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: "title"
+                        "links";
+}
+
+.home-content .title-section{ 
+    grid-area: title; 
+    text-align: center; 
+}
+
+.home-content .grid-content{
+    grid-area: links;
+    margin: 0 20px;
+    padding: 0 30px;
+}
+
+form#import-form, form#export-form{ margin-bottom: 10px; }
+
+input[type=submit]{
+    border: none;
+    color: black;
+    padding: 14px 27px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: lightgray;
+}
+
+.export-div{
+    display: flex;
+    align-items: baseline;
+    justify-content: left;
+}
+label{ margin-right: 20px; }
