@@ -1,39 +1,37 @@
 @extends('layouts.basic')
 
 @section('styles')
-{{-- <link href="{{ asset('css/homeStyle.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('css/responsive-design/scheduleStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
-<div class="title-section"><h2>Tus tareas</h2></div>
-<div class="add-task-section">
-    <form action="{{ route('createTask') }}" method="get">
-        @csrf
-        <input type="submit" class="addtask" name="addTask" value="Añadir nueva tarea">
-    </form>
-</div>
-<div class="next-task-section">
-    <form action="{{ route('indexNextTasks') }}" method="get">
-        @csrf
-        <input type="submit" class="nexttasks" name="nextTasks" value="Próximas tareas">
-    </form>
-</div>
-<div class="schedule-content">
-    @if ($tareas->count() > 0)
-        @foreach ($tareas as $tarea)
-            <div class="task-section">
-                <table>
+<div class="tasks-container">
+    <div class="title-section"><h2>Tareas del día</h2></div>
+    <div class="buttons-section">
+        <form action="{{ route('createTask') }}" method="get">
+            @csrf
+            <input type="submit" class="addtask" name="addTask" value="Nueva tarea">
+        </form>
+        <form action="{{ route('indexNextTasks') }}" method="get">
+            @csrf
+            <input type="submit" class="nexttasks" name="nextTasks" value="Próximas tareas">
+        </form>
+    </div>
+    <div class="schedule-content">
+        @if ($tareas->count() > 0)
+            <table class="table-tasks">
+                <tr>
+                    <th>Tarea</th>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                @foreach ($tareas as $tarea)
                     <tr>
-                        <td><h3>{{ $tarea->tituloTarea }}</h3></td>
-                    </tr>
-                    <tr>
-                        <td><label for="fecha">Fecha</label></td>
-                        <td><p>{{ $tarea->fechaTarea }}</p></td>
-                    </tr>
-                    <tr>
-                        <td><textarea name="descTarea" cols="30" rows="10" disabled>{{ $tarea->descripcionTarea }}</textarea></td>
-                    </tr>
-                    <tr>
+                        <td>{{ $tarea->tituloTarea }}</td>
+                        <td>{{ $tarea->fechaTarea }}</td>
+                        <td>{{ $tarea->descripcionTarea }}</td>
                         <td>
                             <form action="{{ route('editTask', ['idtarea' => $tarea->id]) }}" method="get">
                                 @csrf
@@ -48,29 +46,29 @@
                             </form>
                         </td>
                     </tr>
-                </table>
-                <script>
-                    $('input.deletetask').on('click', function(e){
-                        e.preventDefault();
-                        swal({
-                            title: "¿Está seguro de que desea eliminar la tarea?",
-                            text: "Una vez eliminada no se podrá recuperar",
-                            icon: "warning",
-                            buttons: {
-                                cancel: "Cancelar",
-                                confirm: "Eliminar tarea"
-                            },
-                            dangerMode: true,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) $(this).closest("form").submit();
+                    <script>
+                        $('input.deletetask').on('click', function(e){
+                            e.preventDefault();
+                            swal({
+                                title: "¿Está seguro de que desea eliminar la tarea?",
+                                text: "Una vez eliminada no se podrá recuperar",
+                                icon: "warning",
+                                buttons: {
+                                    cancel: "Cancelar",
+                                    confirm: "Eliminar tarea"
+                                },
+                                dangerMode: true,
+                            })
+                            .then((willDelete) => {
+                                if (willDelete) $(this).closest("form").submit();
+                            });
                         });
-                    });
-                </script>
-            </div>
-        @endforeach
-    @else
-        <div class="empty-list-section"><p>No tiene tareas pendientes.</p></div>
-    @endif
+                    </script>
+                @endforeach
+            </table>
+        @else
+            <p>No tiene tareas pendientes.</p>
+        @endif
+    </div>
 </div>
 @endsection

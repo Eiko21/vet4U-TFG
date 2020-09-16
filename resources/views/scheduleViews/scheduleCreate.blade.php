@@ -1,12 +1,12 @@
 @extends('layouts.basic')
 
 @section('styles')
-{{-- <link href="{{ asset('css/homeStyle.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('css/responsive-design/createTaskStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
-<div class="title-section"><h2>Actualizar tarea</h2></div>
-<div class="schedule-content">
+<div class="newEditTask-content">
+    <div class="title-section"><h2>Nueva tarea</h2></div>
     <div class="task-section">
         <table>
             <form action="{{ route('storeTask') }}" method="post">

@@ -1,0 +1,62 @@
+.tasks-container{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: "title"
+                        "buttons"
+                        "tableTasks";
+}
+
+.tasks-container .title-section{
+    grid-area: title;
+    text-align: center;
+}
+.tasks-container .buttons-section{
+    grid-area: buttons;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttons-section form{
+    margin-right: 15px;
+}
+
+.tasks-container .return-section{
+    grid-area: buttons;
+}
+
+.tasks-container .schedule-content{
+    grid-area: tableTasks;
+}
+
+input[type=submit]{
+    border: none;
+    color: white;
+    padding: 14px 27px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: lightgray;
+}
+
+.table-tasks{
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto;
+}
+.table-tasks th, td {
+    text-align: center;
+    padding: 8px;
+}
+  
+th {
+    background-color: #fAA43D;
+    color: white;
+}
+
+input.addtask{ background-color: green; }
+input.edittask, input.nexttasks{ background-color: lightblue; }
+input.deletetask{ background-color: red; }
+input.currenttasks{ margin-left: 48px; }
+
