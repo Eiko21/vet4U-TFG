@@ -1,12 +1,13 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/fileCreateUpdateStyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/responsive-design/editPetInfoStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
-    <div class="update-file">
-        <table>
+    <div class="update-infopet">
+        <h2>{{ $mascota->nombre }}</h2>
+        <table class="info-table">
             <form action="{{ route('updatePetInfo',['id' => $mascota->id]) }}" method="POST">
                 <input type='hidden' name='_method' value='PUT'>
                 @csrf
@@ -42,7 +43,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input class="update-btn" type="submit" class="editinfo" name="editInfo" value="Actualizar">
+                        <input class="update-btn" type="submit" name="editInfo" value="Actualizar">
                     </td>
                 </tr>
             </form>
