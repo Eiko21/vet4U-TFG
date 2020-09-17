@@ -1,12 +1,14 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/fileCreateUpdateStyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive-design/showFileStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
-    <div class="update-file">
-        <table>
+<div class="file-content">
+    <div class="filetitle"><h2>Ficha {{ $ficha->id }}</h2></div>
+    <div class="file">
+        <table class="table-info">
             <form action="{{ route('updateFile',['idficha' => $ficha->id, 'id' => $ficha->idMascota]) }}" method="POST">
                 <input type='hidden' name='_method' value='PUT'>
                 @csrf
@@ -40,7 +42,7 @@
                 </tr>
                 <tr>
                     <td><label for="temperatura">Temperatura</label></td>
-                    <td><textarea name="temperatura">{{ old('temperatura')??$ficha->temperatura }}</textarea></td>
+                    <td><input type="text" name="temperatura" value="{{ old('temperatura')??$ficha->temperatura }}"></td>
                 </tr>
                 <tr>
                     <td><label for="pruebaRealizada">Pruebas realizadas</label></td>
@@ -52,11 +54,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <input class="update-btn" type="submit" class="editFile" name="editfile" value="Actualizar">
+                        <input class="update-btn" type="submit" name="editfile" value="Actualizar">
                     </td>
                     <td>
-                        {{-- <form action="{{ route('petMedicalHistoryIndex', ['clientid' => $clientid]) }}" method="GET"> --}}
-                        <form action="{{ route('medicalhistoryIndex',['id' => $ficha->idMascota]) }}" method="GET">
+                        <form action="{{ route('showFile',['idficha' => $ficha->id]) }}" method="GET">
                             @csrf
                             <input type="submit" class="cancel-btn" name="cancelfile" value="Cancelar">
                         </form>
@@ -65,4 +66,5 @@
             </form>
         </table>
     </div>
+</div>
 @endsection

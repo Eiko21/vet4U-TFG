@@ -6,9 +6,7 @@
 
 @section('content')
 <div class="home-content">
-    <div class="title-section">
-        <h2>Importación de datos</h2>
-    </div>
+    <div class="title-section"><h2>Importación de datos</h2></div>
     <div class="grid-content">
         <div>
             <h3>Tareas</h3>

@@ -18,11 +18,6 @@
     </div>
     <div class="information">
         <table>
-            {{-- <tr>
-                <td id="nombre">
-                    <label for="nombre">{{ $usuario->nombre }} {{ $usuario->apellidos }}</label>                    
-                </td>
-            </tr> --}}
             <tr class="email">
                 <td><label for="email">Correo electrónico</label></td>
                 <td><p>{{ $usuario->email }}<p></td>

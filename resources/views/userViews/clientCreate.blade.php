@@ -6,9 +6,7 @@
 
 @section('content')
 <div class="newClientContent">
-    <div class="title-form-create">
-        <h2>Nuevo cliente</h2>
-    </div>
+    <div class="title-form-create"><h2>Nuevo cliente</h2></div>
     <div class="form-create-client">
         <table>
             <form action="{{ route('storeClient') }}" method="POST">

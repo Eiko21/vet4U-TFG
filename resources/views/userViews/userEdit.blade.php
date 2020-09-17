@@ -12,9 +12,6 @@
     </form>
 </div>
 <div class="profile-content">
-    {{-- <div class="profile-img">
-        <img src="">
-    </div> --}}
     <div class="information">
         <table>
             <form action="{{ route('userUpdate', ['id' => $usuario->id]) }}" method="post" enctype="multipart/form-data">
