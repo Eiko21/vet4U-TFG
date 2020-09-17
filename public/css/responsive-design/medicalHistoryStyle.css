@@ -1,0 +1,72 @@
+.medicalHistory-content{
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: "title"
+                        "buttons"
+                        "binfo"
+                        "tableFiles";
+}
+
+.medicalHistory-content .pet-name{ grid-area: title; text-align: center; }
+.medicalHistory-content .buttons-section{ 
+    grid-area: buttons; 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.medicalHistory-content .pet-info{ 
+    grid-area: binfo; 
+    display: grid;
+    grid-template-areas: "image info";
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.pet-info .petimg{ grid-area: image; }
+.petimg{ border-radius: 73px; }
+.pet-info .tableBasicInfo{ grid-area: info; }
+.pet-info .buttons-info{ 
+    grid-column: 2/3; 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.medicalHistory-content .pet-files{ grid-area: tableFiles; margin-top: 20px; }
+
+.table-files{
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto;
+}
+.table-files th, td {
+    text-align: center;
+    padding: 6px;
+}
+.table-files th {
+    background-color: #fAA43D;
+    color: white;
+}
+
+.tableBasicInfo > th{
+    background-color: none;
+    color: black;
+}
+
+input[type=submit]{
+    border: none;
+    color: white;
+    padding: 10px 13px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+label{ font-weight: bold; }
+input.deleteFile{ background-color: red; }
+input.showFile,input.indexImage,input.indexvaccines,input.returnbtn{ background-color: lightgray; }
+input.uploadImage,input.inputadd{ background-color: rgb(0, 179, 74); }
+input.editinfo{ background-color: lightskyblue; }
