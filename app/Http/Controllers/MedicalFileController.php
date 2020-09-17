@@ -72,9 +72,9 @@ class MedicalFileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($idficha)
     {
-        //
+        return view('medicalHistoryViews.showFile', ['ficha' => MedicalFile::findOrFail($idficha)]);
     }
 
     /**
@@ -85,8 +85,7 @@ class MedicalFileController extends Controller
      */
     public function edit($id)
     {
-        $ficha = MedicalFile::findOrFail($id);
-        return view('medicalHistoryViews.fileUpdate', compact('ficha'));
+        return view('medicalHistoryViews.fileUpdate', ['ficha' => MedicalFile::findOrFail($id)]);
     }
 
     /**
@@ -112,7 +111,7 @@ class MedicalFileController extends Controller
         $ficha->operacionRealizada = $request->operacionRealizada;
 
         $ficha->save();
-        return redirect(route('medicalhistoryIndex', compact('id')));
+        return redirect(route('showFile', compact('idficha')));
     }
 
     /**
