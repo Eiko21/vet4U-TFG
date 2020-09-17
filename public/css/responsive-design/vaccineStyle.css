@@ -1,0 +1,60 @@
+.vaccine-container{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: "title"
+                        "buttons"
+                        "tableVaccines";
+}
+
+.vaccine-container .title-vaccine-section{
+    grid-area: title;
+    text-align: center;
+}
+.vaccine-container .buttons-section{
+    grid-area: buttons;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttons-section form{
+    margin-right: 15px;
+}
+
+.vaccine-container .return-section{
+    grid-area: buttons;
+}
+
+.vaccine-container .schedule-content{
+    grid-area: tableVaccines;
+}
+
+input[type=submit]{
+    border: none;
+    color: white;
+    padding: 14px 27px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.tableVaccines{
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto;
+}
+.tableVaccines th, td {
+    text-align: center;
+    padding: 8px;
+}
+  
+th {
+    background-color: #fAA43D;
+    color: white;
+}
+
+input.createvaccine{ background-color: rgb(0, 179, 74); }
+input.deleteVaccine{ background-color: red; }
+input.return-btn, input.returnMH{ background-color: lightgray; }
+

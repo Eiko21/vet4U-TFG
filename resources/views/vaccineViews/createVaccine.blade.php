@@ -1,16 +1,14 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/vaccineCreateStyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive-design/createVaccineStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
-<div id="pet-vaccines">
-    <div class="vaccine">
+<div class="pet-vaccines">
+    <div class="title-section"><h2>Nueva vacuna</h2></div>
+    <div class="form-section">
         <table>
-            <tr>
-                <th>Nueva vacuna</th>
-            </tr>
             <form action="{{ route('storeVaccine', ['id' => $id]) }}" method="POST">
                 @csrf
                 <tr>
@@ -45,7 +43,7 @@
                     </form>
                 </td>
             </tr>
-        </table>
-    </div>    
+        </table>   
+    </div>
 </div>
 @endsection
