@@ -71,6 +71,13 @@ Route::middleware(['auth','checkRole:veterinario,cliente'])->group(function(){
 Route::middleware(['auth','checkRole:veterinario'])->group(function(){
     Route::get('/historialmedico/{id}/create','MedicalFileController@create')->name('createFile');
     Route::post('/historialmedico/{id}','MedicalFileController@store')->name('storeFile');
+});
+
+Route::middleware(['auth','checkRole:veterinario,cliente'])->group(function(){
+    Route::get('/ficha/{idficha}','MedicalFileController@show')->name('showFile');
+});
+    
+Route::middleware(['auth','checkRole:veterinario'])->group(function(){
     Route::get('/historialmedico/{id}/edit','MedicalFileController@edit')->name('editFile');
     Route::put('/historialmedico/{idficha}/{id}','MedicalFileController@update')->name('updateFile');
     Route::delete('/historialmedico/{idficha}/{id}','MedicalFileController@destroy')->name('deleteFile');
