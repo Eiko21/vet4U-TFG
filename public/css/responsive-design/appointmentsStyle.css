@@ -21,7 +21,7 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 3px;
-    background-color: green;    
+    background-color: rgb(0, 179, 74);    
 }
 
 .container #emptyList, .container .client-appointment{

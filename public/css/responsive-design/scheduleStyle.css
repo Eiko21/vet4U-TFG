@@ -55,7 +55,7 @@ th {
     color: white;
 }
 
-input.addtask{ background-color: green; }
+input.addtask{ background-color: rgb(0, 179, 74); }
 input.edittask, input.nexttasks{ background-color: lightblue; }
 input.deletetask{ background-color: red; }
 input.currenttasks{ margin-left: 48px; }
