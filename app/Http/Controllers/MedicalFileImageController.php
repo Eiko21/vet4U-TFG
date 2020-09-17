@@ -37,16 +37,6 @@ class MedicalFileImageController extends Controller
      */
     public function store(Request $request, $idficha, $idmascota)
     {
-        // $imagenes = array();
-        // if($request->hasFile('imagen')){
-        //     foreach($request->file('imagen') as $imagen){
-        //         $nombre = $imagen->getClientOriginalName();
-        //         $imagen->move(public_path('/imagesMedicalFile'), $nombre);
-        //         $imagenes[] = $nombre;
-        //     }
-        // }
-        // $allimages = implode('|', $imagenes);
-
         $imagenFicha = new MedicalFileImage();
         
         if($request->hasFile('imagen')){

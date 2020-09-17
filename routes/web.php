@@ -84,8 +84,8 @@ Route::middleware(['auth','checkRole:veterinario,cliente'])->group(function(){
 });
 
 Route::middleware(['auth','checkRole:veterinario'])->group(function(){
-    Route::get('/imageneshistorialmedico/{idficha}/create','MedicalFileImageController@create')->name('createImages');
-    Route::post('/imageneshistorialmedico/{idficha}','MedicalFileImageController@store')->name('storeImages');
+    Route::get('/imageneshistorialmedico/{idficha}/{idmascota}/create','MedicalFileImageController@create')->name('createImages');
+    Route::post('/imageneshistorialmedico/{idficha}{idmascota}','MedicalFileImageController@store')->name('storeImages');
 });
 
 Route::middleware(['auth','checkRole:cliente'])->group(function(){
