@@ -11,7 +11,7 @@
         @if (Auth::user()->idRol == 3)
             <form action="{{ route('home') }}" method="GET">
                 @csrf
-                <input type="submit" name="return-btn" value="Volver al menú">
+                <input type="submit" class="returnbtn" name="return-btn" value="Volver al menú">
             </form>
         @else
             <form action="{{ route('createVaccine', ['id' => $id]) }}" method="GET">

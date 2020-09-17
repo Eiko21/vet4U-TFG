@@ -56,5 +56,5 @@ th {
 
 input.createvaccine{ background-color: rgb(0, 179, 74); }
 input.deleteVaccine{ background-color: red; }
-input.return-btn, input.returnMH{ background-color: lightgray; }
+input.returnbtn, input.returnMH{ background-color: lightgray; }
 
