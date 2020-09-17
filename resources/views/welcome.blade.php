@@ -13,34 +13,29 @@
         <link href="{{ asset('css/responsive-design/welcomeStyle.css') }}" rel="stylesheet">
     </head>
     <body>
-        {{-- <div class="flex-center position-ref full-height"> --}}
-            <div class="content">
-                <div class="title m-b-md">
-                    VetForU
-                </div>
-
-                <div class="links">
-                    @if (Route::has('login'))
-                        @auth
-                            <a href="{{ url('/home') }}">Home</a>
-                        @else
-                            <form action="{{ route('login') }}" method="get">
-                                @csrf
-                                <input type="submit" class="loginbtn" value="Iniciar sesión">
-                            </form>
-                            <form action="{{ route('register') }}" method="get">
-                                @csrf
-                                <input type="submit" class="registerbtn" value="Registrarse">
-                            </form>
-                            {{-- <a id='login' href="{{ route('login') }}"><p>Iniciar sesión</p></a> --}}
-                            {{-- <a id='register' href="{{ route('register') }}">Registrarse</a> --}}
-                        @endauth
-                    @endif
-                </div>
-                <div class="principalImage">
-                    <img src="{{ asset('principalimg/petsImage.png') }}">
-                </div>
+        <div class="content">
+            <div class="title m-b-md">
+                VetForU
             </div>
-        {{-- </div> --}}
+            <div class="links">
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <form action="{{ route('login') }}" method="get">
+                            @csrf
+                            <input type="submit" class="loginbtn" value="Iniciar sesión">
+                        </form>
+                        <form action="{{ route('register') }}" method="get">
+                            @csrf
+                            <input type="submit" class="registerbtn" value="Registrarse">
+                        </form>
+                    @endauth
+                @endif
+            </div>
+            <div class="principalImage">
+                <img src="{{ asset('principalimg/petsImage.png') }}">
+            </div>
+        </div>
     </body>
 </html>
