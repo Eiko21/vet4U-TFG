@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/responsive-design/basicLayoutStyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive-design/basicStyle.css') }}" rel="stylesheet">
 
     <!-- Libraries -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -22,30 +22,19 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @yield('styles')
 
 </head>
 <body>
     <div class="contenedor">
         <header id='section-nav'>
-            {{-- <nav id='home-nav'> --}}
-                <div class="title m-b-md">
-                    <a id="homelink" href="{{ route('home') }}">VetForU</a>
-                </div>
-                {{-- <div id="spacer"></div> --}}
-                <div class="user-name">{{ Auth::user()->nombre }}</div>
-                @if (Auth::user()->idRol == 2)
-                    <div id="export-div" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('exports') }}">{{ __('Exportar datos') }}</a>
-    
-                    </div>
-                    <div id="import-div">
-                        <a class="dropdown-item" href="{{ route('imports') }}">{{ __('Importar datos') }}</a>
-                    </div>
-                @endif
-                <div id="logout-div" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
+            <div class="title">
+                <a id="homelink" href="{{ route('home') }}">VetForU</a>
+            </div>
+            <div class="rigth-section">
+                <div class="logout-btn">
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">{{ __('Cerrar sesión') }}
                     </a>
     
@@ -53,7 +42,8 @@
                         @csrf
                     </form>
                 </div>
-            {{-- </nav> --}}
+                <div class="user-name">{{ Auth::user()->nombre }}</div>
+            </div>
         </header>
         <section id="section-body">
             @yield('content')
