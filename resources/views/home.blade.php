@@ -31,6 +31,18 @@
                 <p>Tu perfil</p>
             </div>
         </a>
+        <a href="{{ route('imports') }}" class="link-5">
+            <div class="options" id="item4">
+                <i class="fa fa-file-excel-o"></i>
+                <p>Importación de datos</p>
+            </div>
+        </a>
+        <a href="{{ route('exports') }}" class="link-6">
+            <div class="options" id="item4">
+                <i class="fa fa-file-excel-o"></i>
+                <p>Exportación de datos</p>
+            </div>
+        </a>
     @else
         @if (Auth::user()->idRol == 3)
             <a href="{{ route('medicalhistoryIndex',['id' => Auth::user()->id]) }}" class="link-1">
