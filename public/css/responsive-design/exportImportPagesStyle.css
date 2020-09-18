@@ -10,7 +10,8 @@
     text-align: center; 
 }
 
-.home-content .grid-content{
+.home-content .grid-content-import,
+.home-content .grid-content-export{
     grid-area: links;
     margin: 0 20px;
     padding: 0 30px;
@@ -35,3 +36,19 @@ input[type=submit]{
     justify-content: left;
 }
 label{ margin-right: 20px; }
+
+
+@media screen and (max-width: 600px){
+    .home-content .grid-content-export {
+        grid-area: links;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .home-content .grid-content-import {
+        grid-area: links;
+        margin: 0 auto;
+        padding: 0 0;
+    }
+
+    input[type=submit]{ padding: 9px 10px; }
+}

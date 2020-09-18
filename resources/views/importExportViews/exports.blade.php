@@ -1,13 +1,13 @@
 @extends('layouts.basic')
 
 @section('styles')
-    <link href="{{ asset('css/responsive-design/exportImportStyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive-design/exportImportPagesStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
 <div class="home-content">
     <div class="title-section"><h2>Exportación de datos</h2></div>
-    <div class="grid-content">
+    <div class="grid-content-export">
         <div class="export-div">
             <label for="tareas">Exporte las tareas de su agenda</label>
             <form id="export-form" action="{{ route('exportTasks') }}" method="GET">

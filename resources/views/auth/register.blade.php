@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('csslinks')
-    <link href="{{ asset('css/responsive-design/registerStyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive-design/registerPageStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')

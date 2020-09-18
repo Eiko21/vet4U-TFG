@@ -73,3 +73,7 @@ table .selects, table .oldAppointment{
     text-align: center;
 }
 label{ margin-right: 15px; }
+
+@media screen and (max-width: 600px){
+    input[type=submit]{ padding: 9px 10px; }
+}

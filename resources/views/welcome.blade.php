@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         
         <!-- Styles -->
-        <link href="{{ asset('css/responsive-design/welcomeStyle.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/responsive-design/welcomePageStyle.css') }}" rel="stylesheet">
     </head>
     <body>
         <div class="content">

@@ -1,19 +1,14 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/profileStyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive-design/editUserProfileStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
-<div>
-    <form action="{{ route('home') }}" method="GET">
-        @csrf
-        <input type="submit" name="return-btn" value="Volver al menú">
-    </form>
-</div>
 <div class="profile-content">
+    <div class="title-section"><h2>Actualice su perfil</h2></div>
     <div class="information">
-        <table>
+        <table class="tableInfo">
             <form action="{{ route('userUpdate', ['id' => $usuario->id]) }}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_method" value="PUT">
                 @csrf

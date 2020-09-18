@@ -60,3 +60,6 @@ input.edittask, input.nexttasks{ background-color: lightblue; }
 input.deletetask{ background-color: red; }
 input.currenttasks{ margin-left: 48px; }
 
+@media screen and (max-width: 600px){
+    input[type=submit]{ padding: 9px 10px; }
+}

@@ -1,13 +1,13 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/responsive-design/exportImportStyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/responsive-design/exportImportPagesStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
 <div class="home-content">
     <div class="title-section"><h2>Importación de datos</h2></div>
-    <div class="grid-content">
+    <div class="grid-content-import">
         <div>
             <h3>Tareas</h3>
             <form id="import-form" action="{{ route('importTasks') }}" method="POST" enctype="multipart/form-data">

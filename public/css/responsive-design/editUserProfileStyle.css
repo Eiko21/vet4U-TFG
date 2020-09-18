@@ -1,0 +1,44 @@
+.profile-content{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: "title"
+                        "form";
+}
+
+.profile-content .title-section{
+    grid-area: title;
+    text-align: center;
+}
+
+.profile-content .information{ grid-area: form; }
+
+.tableInfo{ margin: 20px auto; }
+label{ margin-right: 15px; }
+
+input[type=submit]{
+    border: none;
+    color: white;
+    padding: 10px 13px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+input.update-btn{ background-color: lightskyblue; }
+input.cancel-btn{ background-color: red; }
+input.returnbtn{ background-color: lightgray; }
+
+input[type=text],input[type=email],input[type=tel] {
+    width: 100%;
+    height: 40px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    outline: none;
+    border-radius: 4px;
+}
+
+input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus {
+    border: 2px solid #555;
+}
