@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/responsive-design/newImageStyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/responsive-design/newImagePageStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -21,7 +21,7 @@
             </form>
                 <tr>
                     <td>
-                        <form action="{{ route('indexImage', ['idficha' => $idficha, 'idmascota' => $idmascota]) }}" method="GET">
+                        <form action="{{ route('medicalhistoryIndex', ['id' => $idmascota]) }}" method="GET">
                             @csrf
                             <input type="submit" class="cancel-btn" name="cancelfile" value="Cancelar">
                         </form>
