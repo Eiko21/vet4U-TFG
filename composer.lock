@@ -3311,7 +3311,7 @@
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v5.1.2",
+            "version": "v5.1.*",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
