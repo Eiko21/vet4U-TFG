@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('styles')
-    <link href="{{ asset('css/responsive-design/vaccineStyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive-design/vaccinePageStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
