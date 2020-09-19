@@ -1,14 +1,12 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/fileCreateUpdateStyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive-design/editPetInfoPageStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
     <div class="update-file">
-        <div class="title-section">
-            <h2>Nueva mascota</h2>
-        </div>
+        <div class="title-section"><h2>Nueva mascota</h2></div>
         <table>
             <form action="{{ route('storePet') }}" method="POST">
                 @csrf

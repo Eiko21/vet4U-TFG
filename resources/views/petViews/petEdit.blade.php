@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/responsive-design/editPetInfoStyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/responsive-design/editPetInfoPageStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
