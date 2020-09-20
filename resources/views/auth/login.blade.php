@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container">
-    <div class="title m-b-md">VetForU</div>
+    <div class="title m-b-md">Vet4U</div>
 
     <div class="card-body">
         <form method="POST" action="{{ route('login') }}">
