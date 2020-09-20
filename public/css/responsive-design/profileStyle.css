@@ -17,8 +17,8 @@
 .profile-content .profile-img{
     grid-area: image;
     text-align: center;
-    border-radius: 34px;
 }
+.profile-img img{ border-radius: 34px; }
 
 .profile-content .information{
     grid-area: information;
