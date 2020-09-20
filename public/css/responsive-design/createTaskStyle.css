@@ -48,12 +48,32 @@ input[type=date] {
     border-radius: 4px;
 }
 
+textarea{ 
+    width: 500px;
+    height: 130px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 13px;
+    resize: none;
+    margin-left: 15px;
+}
+
 input.create-btn{ background-color: rgb(0, 179, 74); }
 input.cancel-btn{ background-color: red; }
 input.update-btn{ background-color: lightblue; }
 
 @media screen and (max-width: 600px){
     input[type=submit]{ padding: 9px 10px; }
-    
-    textarea{ width: 100%; }
+
+    textarea{ 
+        width: 235px;
+        height: 120px;
+    }
+
+    input[type=date] {
+        width: 62%;
+    }
 }

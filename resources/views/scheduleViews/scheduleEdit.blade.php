@@ -25,7 +25,7 @@
                     <td><textarea name="descripcionTarea" cols="30" rows="10" required>{{ old('descripcionTarea')??$tarea->descripcionTarea }}</textarea></td>
                 </tr>
                 <tr>
-                    <td> <input type="submit" class="update-btn" name="updateTask" value="Actualizar"></td>
+                    <td><input type="submit" class="update-btn" name="updateTask" value="Actualizar"></td>
                 </tr>
             </form>
             <tr>
