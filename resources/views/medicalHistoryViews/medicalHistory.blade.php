@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/responsive-design/medicalHistoryPageStyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/responsive-design/medicalHistoryStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -22,7 +22,7 @@
     <div class="pet-info">
         <img class="petimg" src="{{ asset('images/pastoraleman.jpg') }}" width="150" height="150">
         <table class="tableBasicInfo">
-            <thead>
+            {{-- <thead>
                 <tr>
                     <th>Chip</th>
                     <th>Especie</th>
@@ -49,6 +49,62 @@
                         @else
                             No
                         @endif
+                        </p>
+                    </td>
+                </tr>
+            </tbody> --}}
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="chip">Chip</label>
+                        <p class="margin-25">{{ $mascota->chip }}<p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="especie">Especie</label>
+                        <p class="margin-18">{{ $mascota->especie }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="raza">Raza</label>
+                        <p class="margin-24">{{ $mascota->raza }}<p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="nacimiento">Nacimiento</label>
+                        <p class="margin-10">{{ $mascota->nacimiento }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="estatura">Estatura</label>
+                        <p class="margin-165">{{ $mascota->estatura }}<p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="peso">Peso</label>
+                        <p class="margin-24">{{ $mascota->peso }}kg</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sexo">Sexo</label>
+                        <p class="margin-24">{{ $mascota->sexo }}<p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="esterilizacion">Esterilización</label>
+                        <p class="margin-6">
+                            @if($mascota->esterilizacion)
+                                Sí
+                            @else
+                                No
+                            @endif
                         </p>
                     </td>
                 </tr>
