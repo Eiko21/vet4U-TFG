@@ -22,37 +22,6 @@
     <div class="pet-info">
         <img class="petimg" src="{{ asset('images/pastoraleman.jpg') }}" width="150" height="150">
         <table class="tableBasicInfo">
-            {{-- <thead>
-                <tr>
-                    <th>Chip</th>
-                    <th>Especie</th>
-                    <th>Raza</th>
-                    <th>Nacimiento</th>
-                    <th>Estatura</th>
-                    <th>Peso</th>
-                    <th>Sexo</th>
-                    <th>Esterilizado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><p>{{ $mascota->chip }}</p></td>
-                    <td><p>{{ $mascota->especie }}</p></td>
-                    <td><p>{{ $mascota->raza }}</p></td>
-                    <td>{{ $mascota->nacimiento }}</td>
-                    <td><p>{{ $mascota->estatura }}</p></td>
-                    <td><p>{{ $mascota->peso }}kg</p></td>
-                    <td><p>{{ $mascota->sexo }}</p></td>
-                    <td><p>
-                        @if($mascota->esterilizacion)
-                            Sí
-                        @else
-                            No
-                        @endif
-                        </p>
-                    </td>
-                </tr>
-            </tbody> --}}
             <tbody>
                 <tr>
                     <td>
@@ -87,13 +56,13 @@
                 <tr>
                     <td>
                         <label for="peso">Peso</label>
-                        <p class="margin-24">{{ $mascota->peso }}kg</p>
+                        <p class="margin-24 extra-margin">{{ $mascota->peso }}kg</p>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label for="sexo">Sexo</label>
-                        <p class="margin-24">{{ $mascota->sexo }}<p>
+                        <p class="margin-24  extra-margin">{{ $mascota->sexo }}<p>
                     </td>
                 </tr>
                 <tr>

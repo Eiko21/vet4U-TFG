@@ -21,11 +21,26 @@
     grid-template-areas: "image info";
     text-align: center;
     align-items: center;
-    justify-content: center;
+    justify-content: inherit;
 }
-.pet-info .petimg{ grid-area: image; }
-.petimg{ border-radius: 73px; }
+.pet-info .petimg{ 
+    grid-area: image; 
+    margin: 0 auto;
+    width: 180px;
+    height: 180px;
+}
+.petimg{ border-radius: 34px; }
 .pet-info .tableBasicInfo{ grid-area: info; }
+.tableBasicInfo td{ display: flex; }
+
+p.margin-25{ margin-left: 25%; }
+p.margin-24{ margin-left: 24.4%; }
+p.extra-margin{ margin-left: 24.8%; }
+p.margin-18{ margin-left: 20.4%; }
+p.margin-165{ margin-left: 20%; }
+p.margin-10{ margin-left: 15%; }
+p.margin-6{ margin-left: 12.7%; }
+
 .pet-info .buttons-info{ 
     grid-column: 2/3; 
     text-align: center;
@@ -34,7 +49,10 @@
     justify-content: center;
 }
 
-.medicalHistory-content .pet-files{ grid-area: tableFiles; margin-top: 20px; }
+.medicalHistory-content .pet-files{ 
+    grid-area: tableFiles; 
+    margin-top: 20px; 
+}
 
 .table-files{
     border-collapse: collapse;
