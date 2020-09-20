@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/responsive-design/appointmentsPageStyle.css') }}" rel="stylesheet">
+<link href="{{ asset('css/responsive-design/appointmentsStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -17,67 +17,67 @@
     </div>
     @if($citas->count() > 0)
         <div id="client-appointment">
-                <table class="tableAppointment">
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Lugar</th>
+            <table class="tableAppointment">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Lugar</th>
+                        @if (Auth::user()->idRol == 2)
+                            <th>Cliente</th>
+                        @endif 
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($citas as $cita)
+                        <tr class="each-appointment">
+                            <td>{{ $cita->fechaCita }}</td>
+                            <td>{{ $cita->hora }}h</td>
+                            <td>{{ $cita->tipoCita }}</td>
                             @if (Auth::user()->idRol == 2)
-                                <th>Cliente</th>
-                            @endif 
-                            <th></th>
-                            <th></th>
+                                <td>{{ $cita->cliente }}</td>
+                            @endif
+                            <td class="forms">
+                                <form action="{{ route('deleteAppointment',['idcita' => $cita->id]) }}" method="POST">
+                                    <input type='hidden' name='_method' value='DELETE'>
+                                    @csrf
+                                    <input type="submit" class="cancelAppointment" name="cancelappointment" value="Cancelar">
+                                </form>
+                                <form action="{{ route('editAppointment',['idcita' => $cita->id]) }}" method="GET">
+                                    @csrf
+                                    <input type="submit" class="editAppointment" name="editappointment" value="Cambiar">
+                                </form>
+                            </td>
+                            {{-- <td>
+                                <form action="{{ route('editAppointment',['idcita' => $cita->id]) }}" method="GET">
+                                    @csrf
+                                    <input type="submit" class="editAppointment" name="editappointment" value="Cambiar">
+                                </form>
+                            </td> --}}
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($citas as $cita)
-                            <tr>
-                                <td>{{ $cita->fechaCita }}</td>
-                                <td>{{ $cita->hora }}h</td>
-                                <td>{{ $cita->tipoCita }}</td>
-                                @if (Auth::user()->idRol == 2)
-                                    <td>{{ $cita->cliente }}</td>
-                                @endif
-                                <td class="forms">
-                                    <form action="{{ route('deleteAppointment',['idcita' => $cita->id]) }}" method="POST">
-                                        <input type='hidden' name='_method' value='DELETE'>
-                                        @csrf
-                                        <input type="submit" class="cancelAppointment" name="cancelappointment" value="Cancelar">
-                                    </form>
-                                    <form action="{{ route('editAppointment',['idcita' => $cita->id]) }}" method="GET">
-                                        @csrf
-                                        <input type="submit" class="editAppointment" name="editappointment" value="Cambiar">
-                                    </form>
-                                </td>
-                                {{-- <td>
-                                    <form action="{{ route('editAppointment',['idcita' => $cita->id]) }}" method="GET">
-                                        @csrf
-                                        <input type="submit" class="editAppointment" name="editappointment" value="Cambiar">
-                                    </form>
-                                </td> --}}
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <script>
-                    $('input.cancelAppointment').on('click', function(e){
-                        e.preventDefault();
-                        swal({
-                            title: "¿Está seguro de que desea cancelar la cita?",
-                            text: "Una vez cancelada deberá concertar una nueva",
-                            icon: "warning",
-                            buttons: {
-                                cancel: "Cancelar",
-                                confirm: "Cancelar cita"
-                            },
-                            dangerMode: true,
-                        })
-                        .then((willDelete) => {
-                            if (willDelete) $(this).closest("form").submit();
-                        });
+                    @endforeach
+                </tbody>
+            </table>
+            <script>
+                $('input.cancelAppointment').on('click', function(e){
+                    e.preventDefault();
+                    swal({
+                        title: "¿Está seguro de que desea cancelar la cita?",
+                        text: "Una vez cancelada deberá concertar una nueva",
+                        icon: "warning",
+                        buttons: {
+                            cancel: "Cancelar",
+                            confirm: "Cancelar cita"
+                        },
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) $(this).closest("form").submit();
                     });
-                </script>
+                });
+            </script>
         </div>
     @else
         <div id="emptyList">

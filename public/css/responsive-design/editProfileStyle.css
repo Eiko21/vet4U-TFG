@@ -42,3 +42,9 @@ input[type=text],input[type=email],input[type=tel] {
 input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus {
     border: 2px solid #555;
 }
+
+@media screen and (max-width: 600px){
+    input[type=text],input[type=email],input[type=tel] {
+        width: 64%;
+    }
+}

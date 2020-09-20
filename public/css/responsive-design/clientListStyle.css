@@ -1,0 +1,88 @@
+.list-content{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: "botonNuevoCliente"
+                        "listadoClientes";
+}
+
+input[type=submit]{
+    border: none;
+    color: white;
+    padding: 14px 27px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.list-content .create-client-section{
+    grid-area: botonNuevoCliente;
+    margin-left: 20px;
+}
+input.createclient{
+    background-color: rgb(0, 179, 74);
+}
+
+.list-content .information{
+    grid-area: listadoClientes;
+    margin: 0 20px;
+}
+
+.information .tableClient{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+.tableClient th, td {
+    text-align: left;
+    padding: 8px;
+}
+  
+th {
+    background-color: #fAA43D;
+    color: white;
+}
+
+input#inputdelete{
+    background-color: red;
+}
+
+@media screen and (max-width: 600px){
+    input[type=submit]{ padding: 9px 10px; }
+
+    table { width:100%; }
+    thead { display: none; }
+    tr:nth-of-type(2n) { background-color: inherit; }
+
+    tbody td {
+        /* display: block; */
+        display: flex;
+        text-align:center;
+    }
+    tbody td:before {
+        content: attr(data-th);
+        /* background: #f0f0f0; */
+        font-weight:bold;
+        /* display: block; */
+        text-align:center;
+        margin-right: 53px;
+    }
+    td:nth-of-type(n):before{
+        /* display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: left; */
+        display: contents;
+        text-align: left;
+    }
+
+    td:nth-of-type(1):before { content: "Nombre"; }
+    td:nth-of-type(2):before { content: "Correo electrónico"; }
+    td:nth-of-type(3):before { content: "Teléfono"; }
+    td:nth-of-type(4):before { content: "Mascota"; }
+    td:nth-of-type(5):before { content: ""; }
+
+    table .clientname{ margin-left: 23%; }
+    table .clienttlf,table .clientpet{ margin-left: 21%; }
+    #table-body{ border: 0.5px solid lightgray; }
+}

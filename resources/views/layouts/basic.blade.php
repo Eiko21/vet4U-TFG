@@ -30,7 +30,7 @@
     <div class="contenedor">
         <header id='section-nav'>
             <div class="title">
-                <a id="homelink" href="{{ route('home') }}">VetForU</a>
+                <a id="homelink" href="{{ route('home') }}">Vet4U</a>
             </div>
             <div class="rigth-section">
                 <div class="logout-btn">

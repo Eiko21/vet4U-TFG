@@ -14,9 +14,7 @@
     </head>
     <body>
         <div class="content">
-            <div class="title m-b-md">
-                VetForU
-            </div>
+            <div class="title m-b-md">Vet4U</div>
             <div class="links">
                 @if (Route::has('login'))
                     @auth
