@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('styles')
-    <link href="{{ asset('css/responsive-design/createTaskPageStyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive-design/createTaskStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
