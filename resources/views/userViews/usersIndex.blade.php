@@ -1,28 +1,31 @@
 @extends('layouts.basic')
 
 @section('styles')
-<link href="{{ asset('css/clientListStyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive-design/registeredUsersListStyle.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
 <div class="user-list-content">
+    <div class="title-section"><h2>Usuarios registrados</h2></div>
     <div class="filter-user-section">
         <input type="search" id="buscador" name="usuarioBuscado" placeholder="Buscar usuario">
     </div>
     <div class="information">
         @if ($usuarios->count() > 0)
             <table>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Correo electrónico</th>
-                    <th>Teléfono</th>
-                    <th>Rol</th>
-                    <th></th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Correo electrónico</th>
+                        <th>Teléfono</th>
+                        <th>Rol</th>
+                        <th></th>
+                    </tr>                
+                </thead>
                 <tbody id="table-body">
                     @foreach ($usuarios as $usuario)
-                        <tr>
+                        <tr class="each-user">
                             <td><p>{{ $usuario->nombre }}<p></td>
                             <td><p>{{ $usuario->apellidos }}<p></td>
                             <td><p>{{ $usuario->email }}</p></td>
